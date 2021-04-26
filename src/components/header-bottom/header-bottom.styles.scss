@@ -1,0 +1,27 @@
+.header-bottom {
+  min-height: 40px;
+  width: clamp(300px, 100%, 2048px);
+  border-top: solid 2px var(--color-greyish-border);
+  border-bottom: solid 2px var(--color-greyish-border);
+  color: var(--color-font);
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__nav {
+    padding: 0px 1.3rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.57;
+  }
+  &__men {
+    margin-left: auto;
+  }
+  &__boys {
+    margin-right: auto;
+  }
+  .icon-chevron-down {
+    padding-left: 7px;
+  }
+}

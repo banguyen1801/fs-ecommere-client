@@ -1,0 +1,24 @@
+.footer-top {
+  font-family: var(--ff-primary);
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--color-greyish-two);
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid var(--color-greyish-border);
+
+  &__nav {
+    &__nav-items {
+      margin: 0 0.7rem;
+    }
+  }
+
+  &__icons {
+    .icon {
+      padding-left: 0.7rem;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.footer-bottom {
+  font-size: 12px;
+  font-weight: normal;
+  font-family: var(--ff-primary);
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--color-greyish-two);
+  margin: 0px 80px;
+  border-top: 2px solid var(--color-greyish-border);
+
+  &__nav {
+    margin-right: auto;
+    &__nav-items {
+      padding-right: 1rem;
+    }
+  }
+
+  &__policies {
+    &__policies-items {
+      padding-left: 1rem;
+    }
+  }
+}

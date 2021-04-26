@@ -1,0 +1,32 @@
+.input {
+  position: relative;
+  width: clamp(100px, 181px, 300px);
+
+  &__input-field {
+    color: var(--color-greyish);
+    width: 100%;
+    border-radius: 9999px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px 12px 8px 8px;
+    border: solid 2px var(--color-greyish-two);
+    box-sizing: border-box;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__input-field:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+  }
+  &__input-field:focus + .icon-searchbar {
+    color: dodgerblue;
+  }
+  .icon-searchbar {
+    position: absolute;
+    right: 0;
+    padding: 15px 12px;
+  }
+}

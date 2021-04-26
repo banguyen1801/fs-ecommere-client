@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: var(--ff-primary);
+
+  .header-top {
+    max-height: 20vh;
+
+    flex-basis: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    &__left {
+      font-size: 14px;
+      display: inline;
+      cursor: pointer;
+
+      &__login {
+        border-radius: 9999px;
+        border: solid 2px var(--color-btn-active);
+        margin: 2px 10px 12px 10px;
+        padding: 7px 30px 6px 30px;
+        font-weight: bold;
+        color: var(--color-btn-active);
+      }
+      &__register {
+        border: none;
+      }
+    }
+  }
+}
