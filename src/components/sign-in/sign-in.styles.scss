@@ -1,0 +1,28 @@
+.sign-in {
+  &__button {
+    border-radius: 9999px;
+    border: solid 2px var(--color-btn-active);
+    margin: 12px 10px 12px 10px;
+    padding: 7px 30px 6px 30px;
+    font-weight: bold;
+    color: var(--color-btn-active);
+  }
+  &__modal {
+    font-size: 14px;
+    font-family: var(--ff-primary);
+
+    &__header {
+      &__title {
+        margin-left: 12rem;
+      }
+    }
+    &__footer {
+      align-self: center;
+    }
+    .link {
+      color: #ff7413;
+      border-bottom: 1px solid #ff7413;
+      font-weight: bold;
+    }
+  }
+}

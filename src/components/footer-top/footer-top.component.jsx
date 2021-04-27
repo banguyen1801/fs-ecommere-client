@@ -18,9 +18,9 @@ const FooterTop = () => (
       <span className="footer-top__nav__nav-items">Contacts</span>
     </div>
     <div className="footer-top__icons">
-      <span class="icon icon-twitter"></span>
-      <span class="icon icon-facebook"></span>
-      <span class="icon icon-instagram"></span>
+      <span className="icon icon-twitter"></span>
+      <span className="icon icon-facebook"></span>
+      <span className="icon icon-instagram"></span>
     </div>
   </div>
 );

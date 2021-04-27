@@ -1,0 +1,22 @@
+.sign-up {
+  &__modal {
+    font-size: 14px;
+    font-family: var(--ff-primary);
+
+    &__header {
+      &__title {
+        margin-left: 12rem;
+        font-weight: bold;
+      }
+    }
+
+    &__footer {
+      align-self: center;
+    }
+    .link {
+      color: #ff7413;
+      border-bottom: 1px solid #ff7413;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import './App.styles.scss';
-import { Route, Link, withRouter, Switch } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 import Homepage from './pages/homepage.component';
+import SignUp from './components/sign-up/sign-up.component';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Homepage}></Route>
+        <Route path="/signup" component={SignUp}></Route>
       </Switch>
       <Footer />
     </div>
