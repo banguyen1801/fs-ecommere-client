@@ -27,6 +27,9 @@ const SignInForm = () => {
           Forgot Your Password?
         </span>
       </div>
+      <div className="si-form__button-field">
+        <button className="si-form__login-button">Login</button>
+      </div>
     </div>
   );
 };

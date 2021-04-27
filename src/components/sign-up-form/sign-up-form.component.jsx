@@ -16,6 +16,9 @@ const SignUpForm = () => (
       <span> and </span>
       <span className="su-form__terms__link">Privacy Policies</span>
     </div>
+    <div className="su-form__button-field">
+      <button className="su-form__register-button">Register</button>
+    </div>
   </div>
 );
 

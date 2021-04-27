@@ -28,4 +28,19 @@
       font-weight: bold;
     }
   }
+  &__button-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+  &__register-button {
+    font-weight: bold;
+    color: white;
+    width: clamp(100px, 375px, 600px);
+    height: 50px;
+    border: none;
+    background-color: var(--color-btn-active);
+  }
 }
