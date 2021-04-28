@@ -1,4 +1,5 @@
 import React from 'react';
+import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
 
 import './header-top.styles.scss';
 
@@ -6,20 +7,28 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import HeaderInput from '../header-input/header-input.component';
 import SignUp from '../sign-up/sign-up.component';
 import SignIn from '../sign-in/sign-in.component';
+import UserIcon from '../user-icon/user-icon.component';
 
-const HeaderTop = () => (
-  <div className="header-top">
-    <HeaderInput />
-    <img
-      className="header-top__shop-logo"
-      src="/images/logo.svg"
-      alt="shop-logo"
-    />
-    <div className="header-top__left">
-      <SignUp />
-      <SignIn />
-      <CartIcon />
+const HeaderTop = () => {
+  // eslint-disable-next-line
+  const [jwtToken, setJwtToken] = useSessionStorage('jwtToken', '');
+
+  return (
+    <div className="header-top">
+      <HeaderInput />
+      <img
+        className="header-top__shop-logo"
+        src="/images/logo.svg"
+        alt="shop-logo"
+      />
+      <div className="header-top__left">
+        {!jwtToken ? <SignUp /> : null}
+        {!jwtToken ? <SignIn /> : null}
+        {jwtToken ? <UserIcon /> : null}
+
+        <CartIcon />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 export default HeaderTop;

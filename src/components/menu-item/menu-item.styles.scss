@@ -28,6 +28,12 @@
     align-items: center;
     justify-content: center;
 
+    &__cover-link {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     &__title {
       font-weight: bold;
       margin-bottom: 6px;

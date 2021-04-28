@@ -35,6 +35,7 @@ const sections = [
 ];
 
 const Directory = () => {
+  // eslint-disable-next-line
   const [section, setSections] = useState(sections);
   return (
     <div className="directory-menu">
