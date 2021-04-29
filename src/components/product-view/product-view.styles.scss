@@ -1,0 +1,10 @@
+.product-view {
+  background-color: lightskyblue;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 80%;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}

@@ -13,7 +13,6 @@ import {
 const SignIn = () => {
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.modal.signInModalShow);
-  // const [show, setShow] = useState(false);
 
   const handleClose = () => dispatch(hideSignInModal());
   const handleShow = () => dispatch(showSignInModal());

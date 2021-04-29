@@ -1,0 +1,28 @@
+.product-card {
+  background-color: plum;
+  flex: 0 1 19%;
+  margin: 0.5%;
+  height: clamp(5%, 32%, 32%);
+  font-family: var(--ff-primary);
+
+  display: flex;
+  flex-direction: column;
+
+  .product-image {
+    border: 1px solid black;
+    flex: 1 1 80%;
+  }
+  .product-name {
+    border: 1px solid black;
+    flex: 1 1 15%;
+
+    font-size: 1vw;
+    overflow: hidden;
+  }
+  .product-price {
+    border: 1px solid black;
+    flex: 1 1 5%;
+    font-size: 0.9vw;
+    color: #4d4d4d;
+  }
+}

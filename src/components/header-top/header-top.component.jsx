@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
 
 import './header-top.styles.scss';
 
@@ -11,8 +10,6 @@ import SignIn from '../sign-in/sign-in.component';
 import UserIcon from '../user-icon/user-icon.component';
 
 const HeaderTop = () => {
-  // eslint-disable-next-line
-  // const [jwtToken, setJwtToken] = useSessionStorage('jwtToken', '');
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   return (

@@ -1,0 +1,21 @@
+.top-pagination {
+  background-color: lightcoral;
+  display: flex;
+  justify-content: space-between;
+
+  .dropdown-toggle {
+    background-color: transparent;
+    color: #202124;
+    font-weight: bold;
+  }
+
+  .pagination {
+    align-self: center;
+    display: flex;
+
+    .page-number {
+      font-family: var(--ff-primary);
+      margin: 0 0.5vw;
+    }
+  }
+}
