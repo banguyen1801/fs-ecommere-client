@@ -1,0 +1,36 @@
+.sidebar__filter {
+  margin-top: 2vw;
+  border-top: solid 6px #979797;
+
+  .header {
+    margin-top: 2vw;
+    border-radius: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: start;
+    background-color: transparent;
+    border: none;
+  }
+  .dropdown {
+    .dropdown-button {
+      width: 100%;
+      text-align: start;
+      background-color: transparent;
+      color: #202124;
+      border: none;
+      border-radius: 0px;
+      margin-bottom: 2vh;
+
+      border-bottom: 3px solid #cccccc !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    .dropdown-button:focus {
+      background-color: transparent;
+      color: #202124;
+    }
+    .dropdown-menu {
+      display: flex;
+    }
+  }
+}

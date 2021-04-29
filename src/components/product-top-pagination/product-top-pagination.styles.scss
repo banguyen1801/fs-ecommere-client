@@ -1,5 +1,4 @@
 .top-pagination {
-  background-color: lightcoral;
   display: flex;
   justify-content: space-between;
 
@@ -7,6 +6,8 @@
     background-color: transparent;
     color: #202124;
     font-weight: bold;
+
+    border: 2px solid #d4d3d3;
   }
 
   .pagination {

@@ -1,0 +1,17 @@
+.sidebar__categories {
+  .header {
+    font-weight: bold;
+    border-radius: 0px;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+  }
+
+  .link {
+    border: none;
+    background-color: transparent;
+  }
+  .link:focus {
+    color: var(--color-btn-active);
+  }
+}
