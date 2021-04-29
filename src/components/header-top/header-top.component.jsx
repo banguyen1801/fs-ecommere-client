@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
 
 import './header-top.styles.scss';
@@ -11,7 +12,8 @@ import UserIcon from '../user-icon/user-icon.component';
 
 const HeaderTop = () => {
   // eslint-disable-next-line
-  const [jwtToken, setJwtToken] = useSessionStorage('jwtToken', '');
+  // const [jwtToken, setJwtToken] = useSessionStorage('jwtToken', '');
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   return (
     <div className="header-top">
@@ -22,10 +24,11 @@ const HeaderTop = () => {
         alt="shop-logo"
       />
       <div className="header-top__left">
-        {!jwtToken ? <SignUp /> : null}
-        {!jwtToken ? <SignIn /> : null}
-        {jwtToken ? <UserIcon /> : null}
-
+        {!isAuthenticated ? <SignUp /> : null}
+        {!isAuthenticated ? <SignIn /> : null}
+        {isAuthenticated ? <UserIcon /> : null}
+        {/* <SignUp />
+        <SignIn /> */}
         <CartIcon />
       </div>
     </div>

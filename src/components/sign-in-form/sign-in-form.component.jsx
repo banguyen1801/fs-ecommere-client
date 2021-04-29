@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
-import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
-import { Link } from 'react-router-dom';
-
 import './sign-in-form.styles.scss';
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
+import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
+import setAuthorizationToken from '../../utils/auth/setAuthorizationToken';
+
+import { setCurrentUser } from '../../redux/user/user.actions';
+import {
+  showSignInModal,
+  hideSignInModal,
+} from '../../redux/modal/modal.actions';
 
 const SignInForm = () => {
   const [checked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
   // eslint-disable-next-line
   const [jwtToken, setJwtToken] = useSessionStorage('jwtToken', '');
+  // eslint-disable-next-line
   const [user, setUser] = useSessionStorage('user', {});
 
   const login = async () => {
-    console.log(email, password);
     try {
       const loginResponse = await axios.post(
         'http://localhost:5000/api/login',
@@ -27,16 +36,20 @@ const SignInForm = () => {
         }
       );
       const data = loginResponse.data;
-      axios.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${data.accessToken}`;
+      if (data) {
+        dispatch(hideSignInModal());
+      }
       setJwtToken(data.accessToken);
-      setUser(data.user);
+      setAuthorizationToken(data.accessToken);
+
+      console.log('decoded jwtToken', jwt.decode(data.accessToken));
+      setUser(jwt.decode(data.accessToken));
+      dispatch(setCurrentUser(jwt.decode(data.accessToken)));
+
       console.log(data);
-      console.log(user);
-      window.location.reload();
     } catch (err) {
       console.log(err);
+      dispatch(showSignInModal());
     }
   };
   // useEffect(() => {

@@ -10,24 +10,24 @@ const sections = [
     id: 1,
   },
   {
-    title: 'men',
+    title: 'Men',
     imageUrl:
       'https://i.pinimg.com/564x/1c/cc/be/1cccbe0ec79b484a367a704c8d08bfbf.jpg',
     id: 2,
   },
   {
-    title: 'ladies',
+    title: 'Ladies',
     imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
     id: 3,
   },
   {
-    title: 'boys',
+    title: 'Boys',
     imageUrl:
       'https://img.pngio.com/bad-boy-style-outfits-for-men-mens-fashion-leather-jacket-man-in-bad-clothes-png-638_1128.png',
     id: 4,
   },
   {
-    title: 'girl',
+    title: 'Girls',
     imageUrl:
       'https://www.pngkey.com/png/full/212-2126022_iu-fashion-gangnam-style-park-shin-hye-korean.png',
     id: 5,

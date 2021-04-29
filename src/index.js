@@ -8,14 +8,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // REDUX
 
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import { store, persistor } from './redux/store';
+
+// Utils
+import setAuthorizationToken from './utils/auth/setAuthorizationToken';
+
+setAuthorizationToken(JSON.parse(sessionStorage.getItem('jwtToken')));
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -30,14 +30,14 @@
 
     &__cover-link {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
     }
 
     &__title {
       font-weight: bold;
       margin-bottom: 6px;
-      font-size: 16px;
+      font-size: 24px;
       border-bottom: 2px solid #eaeaea;
       padding: 0px 1rem;
       color: white;

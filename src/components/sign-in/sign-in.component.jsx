@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
-
 import './sign-in.styles.scss';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Modal from 'react-bootstrap/Modal';
-
 import SignInForm from '../sign-in-form/sign-in-form.component';
-const SignIn = () => {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+import {
+  showSignInModal,
+  hideSignInModal,
+} from '../../redux/modal/modal.actions';
+
+const SignIn = () => {
+  const dispatch = useDispatch();
+  const showModal = useSelector((state) => state.modal.signInModalShow);
+  // const [show, setShow] = useState(false);
+
+  const handleClose = () => dispatch(hideSignInModal());
+  const handleShow = () => dispatch(showSignInModal());
 
   return (
     <div className="sign-in">
       <div className="sign-in__button" onClick={handleShow}>
         Login
       </div>
-      <Modal className="sign-in__modal" show={show} onHide={handleClose}>
+      <Modal className="sign-in__modal" show={showModal} onHide={handleClose}>
         <Modal.Header className="sign-in__modal__header" closeButton>
           <Modal.Title
             style={{ fontWeight: 'bold' }}

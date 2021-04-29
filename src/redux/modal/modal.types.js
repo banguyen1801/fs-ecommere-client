@@ -1,0 +1,8 @@
+const modalActionTypes = {
+  SHOW_SIGN_IN_MODAL: 'SHOW_SIGN_IN_MODAL',
+  HIDE_SIGN_IN_MODAL: 'HIDE_SIGN_IN_MODAL',
+  SHOW_SIGN_UP_MODAL: 'SHOW_SIGN_UP_MODAL',
+  HIDE_SIGN_UP_MODAL: 'HIDE_SIGN_UP_MODAL',
+};
+
+export default modalActionTypes;
