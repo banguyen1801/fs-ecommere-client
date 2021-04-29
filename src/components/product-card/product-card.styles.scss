@@ -10,6 +10,25 @@
   .product-image {
     border: 1px solid black;
     flex: 1 1 80%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    .quick-shop-button {
+      display: none;
+      position: absolute;
+      height: 20%;
+      width: 100%;
+      outline: none;
+      border: none;
+      color: white;
+      background-color: var(--color-btn-active);
+    }
+  }
+  .product-image:hover {
+    .quick-shop-button {
+      display: block;
+    }
   }
   .product-name {
     border: 1px solid black;

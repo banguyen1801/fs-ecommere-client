@@ -3,12 +3,12 @@
   width: clamp(100px, 181px, 300px);
 
   &__input-field {
-    color: var(--color-greyish);
+    color: #202124;
     width: 100%;
     border-radius: 9999px;
     margin: 8px 0;
     outline: none;
-    padding: 8px 12px 8px 8px;
+    padding: 8px 1.2rem 8px 0.4rem;
     border: solid 2px var(--color-greyish-two);
     box-sizing: border-box;
 
@@ -18,11 +18,11 @@
   }
 
   &__input-field:focus {
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px 0 dodgerblue;
+    border-color: var(--color-btn-active);
+    box-shadow: 0 0 8px 0 var(--color-btn-active);
   }
   &__input-field:focus + .icon-searchbar {
-    color: dodgerblue;
+    color: var(--color-btn-active);
   }
   .icon-searchbar {
     position: absolute;

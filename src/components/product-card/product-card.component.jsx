@@ -8,7 +8,9 @@ const ProductCard = ({
 }) => {
   return (
     <div className="product-card">
-      <div className="product-image">product image</div>
+      <div className="product-image">
+        <button className="quick-shop-button">+ Quick Shop</button>
+      </div>
       <div className="product-name">{productName}</div>
       <div className="product-price">${price}</div>
     </div>
