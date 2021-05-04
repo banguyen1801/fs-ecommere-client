@@ -5,14 +5,14 @@
   display: flex;
   flex-direction: column;
 
-  .bot-pagination {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  // .bot-pagination {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: flex-end;
 
-    .page-number {
-      font-family: var(--ff-primary);
-      margin: 0 0.5vw;
-    }
-  }
+  //   .page-number {
+  //     font-family: var(--ff-primary);
+  //     margin: 0 0.5vw;
+  //   }
+  // }
 }

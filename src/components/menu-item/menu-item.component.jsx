@@ -11,7 +11,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => (
     className={` ${size} menu-item `}
   >
     <div className="content">
-      <Link to={`${linkUrl}`} className="content__cover-link">
+      <Link to={linkUrl} className="content__cover-link">
         <h1 className="content__title">{title}</h1>
         <span className="content__subtitle">SHOP NOW</span>
       </Link>

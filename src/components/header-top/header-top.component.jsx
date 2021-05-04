@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import './header-top.styles.scss';
 
 import CartIcon from '../cart-icon/cart-icon.component';
@@ -15,11 +15,13 @@ const HeaderTop = () => {
   return (
     <div className="header-top">
       <HeaderInput />
-      <img
-        className="header-top__shop-logo"
-        src="/images/logo.svg"
-        alt="shop-logo"
-      />
+      <Link to="/">
+        <img
+          className="header-top__shop-logo"
+          src="/images/logo.svg"
+          alt="shop-logo"
+        />
+      </Link>
       <div className="header-top__left">
         {!isAuthenticated ? <SignUp /> : null}
         {!isAuthenticated ? <SignIn /> : null}

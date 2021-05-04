@@ -52,20 +52,20 @@ const SignInForm = () => {
       dispatch(showSignInModal());
     }
   };
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:5000/api/products/advanced', {
-  //       params: {
-  //         page: 1,
-  //         categories: ['PartyOccasionDresses', 'MiniDresses'],
-  //         sort: 'highestprice',
-  //       },
-  //     })
-  //     .then((res) => console.log(res.data))
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/api/products/advanced', {
+        params: {
+          page: 1,
+          categories: ['MaxiMidiDresses'],
+          sort: 'highestprice',
+        },
+      })
+      .then((res) => console.log(res.data))
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="si-form">

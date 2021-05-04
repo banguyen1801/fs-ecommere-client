@@ -1,21 +1,16 @@
 import './product-list.styles.scss';
 import React from 'react';
 
-import TopPagination from '../product-top-pagination/product-top-pagination.component';
+import ProductListTop from '../product-list-top/product-list-top.component';
 import ProductView from '../product-view/product-view.component';
+import ProductPagination from '../product-pagination/product-pagination.component';
 
 const ProductList = () => {
   return (
     <div className="product-list">
-      <TopPagination />
+      <ProductListTop />
       <ProductView />
-      <div className="bot-pagination">
-        <div className="pagination">
-          <span className="icon icon-navigate_before"></span>
-          <span className="page-number">1/1</span>
-          <span className="icon icon-navigate_next"></span>
-        </div>
-      </div>
+      <ProductPagination />
     </div>
   );
 };

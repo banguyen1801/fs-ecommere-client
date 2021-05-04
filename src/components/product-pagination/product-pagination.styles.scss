@@ -1,0 +1,10 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+
+  .page-number {
+    font-family: var(--ff-primary);
+    margin: 0 0.5vw;
+  }
+}
