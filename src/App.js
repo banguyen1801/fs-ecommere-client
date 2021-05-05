@@ -5,6 +5,7 @@ import Footer from './components/footer/footer.component';
 
 import Homepage from './pages/homepage/homepage.component';
 import ProductPage from './pages/productpage/productpage.component';
+import ProductDetailPage from './pages/productdetailpage/productDetailPage.component';
 
 function App() {
   return (
@@ -12,7 +13,12 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Homepage}></Route>
-        <Route path="/products" component={ProductPage}></Route>
+        <Route exact path="/products" component={ProductPage}></Route>
+        <Route
+          exact
+          path="/products/details"
+          component={ProductDetailPage}
+        ></Route>
       </Switch>
       <Footer />
     </div>

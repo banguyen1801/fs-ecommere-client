@@ -1,0 +1,25 @@
+.suggestion-panel {
+  height: 17.5%;
+
+  &__legend {
+    height: 15%;
+  }
+  &__card-list {
+    display: flex;
+    height: 80%;
+    &__card {
+      flex: 1 1 12.5%;
+      margin: 0.1rem;
+
+      .card-image {
+        border: 1px solid gray;
+        height: 80%;
+      }
+      .card-name {
+        border: 1px solid gray;
+        font-size: 0.5rem;
+        height: 20%;
+      }
+    }
+  }
+}

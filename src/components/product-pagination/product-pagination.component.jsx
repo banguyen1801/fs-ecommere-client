@@ -16,15 +16,13 @@ const ProductPagination = () => {
 
   const handleIncreasePage = () => {
     if (currentPage < maxPage) {
-      var newPageNumber = currentPage + 1;
-      dispatch(setCurrentProductPage(newPageNumber));
+      dispatch(setCurrentProductPage(currentPage + 1));
     }
   };
 
   const handleDecreasePage = () => {
     if (currentPage >= 2) {
-      var newPageNumber = currentPage - 1;
-      dispatch(setCurrentProductPage(newPageNumber));
+      dispatch(setCurrentProductPage(currentPage - 1));
     }
   };
 
@@ -32,6 +30,7 @@ const ProductPagination = () => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
+      console.log('current page', currentPage);
       dispatch(
         fetchProductAdvancedAsync({
           currentPage,
@@ -49,7 +48,7 @@ const ProductPagination = () => {
         onClick={() => handleDecreasePage()}
       ></span>
       <span className="page-number">
-        {currentPage}/{maxPage}
+        {currentPage}/{maxPage ? maxPage : 1}
       </span>
       <span
         className="icon icon-navigate_next"

@@ -1,0 +1,111 @@
+.product-info {
+  flex: 0 1 58%;
+
+  margin-right: 5px;
+  color: #202124;
+  padding-right: 50px;
+
+  .product-info__name {
+    height: 8%;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .product-info__price {
+    height: 7%;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  .product-info__reviews {
+    height: 10%;
+
+    .review-box {
+      display: flex;
+      align-items: flex-start;
+
+      .review-box__star-meter {
+        margin-right: 5px;
+      }
+
+      .review-box__legend {
+        border-left: 2px solid #979797;
+        padding-left: 5px;
+      }
+    }
+  }
+
+  .product-info__size {
+    height: 15%;
+
+    .size-button {
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+      outline: none;
+      border: solid 2px #808080;
+      font-weight: 500;
+    }
+
+    .selected {
+      background-color: var(--color-btn-active);
+      border: none;
+      color: white;
+    }
+  }
+
+  .product-info__color {
+    height: 15%;
+
+    .color-button {
+      margin-right: 10px;
+      width: 30px;
+      height: 30px;
+      outline: none;
+      border: none;
+      border-radius: 9999px;
+    }
+
+    .selected {
+      background-color: var(--color-btn-active);
+      border: 2px solid black;
+      color: white;
+    }
+  }
+
+  .product-info__quantity {
+    height: 15%;
+    display: flex;
+    align-items: center;
+
+    .product-count-wrapper {
+      display: flex;
+      border: 2px solid #d4d3d3;
+      margin-left: 20px;
+      width: 100px;
+      height: 40px;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+
+  .product-info__add-to-cart-button {
+    height: 15%;
+    width: 100%;
+    box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.12);
+    background-color: var(--color-btn-active);
+    color: white;
+    font-weight: 600;
+    border: none;
+  }
+
+  .product-info__add-to-cart-button:hover {
+    opacity: 0.7;
+  }
+
+  .product-info__minor-detail {
+    border-top: 2px solid #808080;
+    margin-top: 10px;
+    font-size: 12px;
+    height: calc(15% - 10px);
+  }
+}

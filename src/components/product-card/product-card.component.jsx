@@ -8,7 +8,12 @@ const ProductCard = ({
 }) => {
   return (
     <div className="product-card">
-      <div className="product-image">
+      <div
+        style={{
+          backgroundImage: `url(${imageUrl[0]})`,
+        }}
+        className="product-image"
+      >
         <button className="quick-shop-button">+ Quick Shop</button>
       </div>
       <div className="product-name">{productName}</div>

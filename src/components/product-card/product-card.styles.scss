@@ -8,11 +8,12 @@
   flex-direction: column;
 
   .product-image {
-    border: 1px solid black;
     flex: 1 1 80%;
     position: relative;
     display: flex;
     align-items: flex-end;
+    background-size: cover;
+    background-position: center;
 
     .quick-shop-button {
       display: none;
@@ -31,14 +32,14 @@
     }
   }
   .product-name {
-    border: 1px solid black;
+    border: 0.5px solid gray;
     flex: 1 1 15%;
 
     font-size: 1vw;
     overflow: hidden;
   }
   .product-price {
-    border: 1px solid black;
+    border: 0.5px solid gray;
     flex: 1 1 5%;
     font-size: 0.9vw;
     color: #4d4d4d;

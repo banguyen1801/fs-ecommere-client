@@ -63,7 +63,7 @@ export const fetchProductAdvancedAsync = ({
   currentPage,
   currentCategories,
 }) => {
-  console.log('thunk', currentSort, (currentPage = 1), currentCategories);
+  console.log('thunk', currentSort, currentPage, currentCategories);
   return async (dispatch) => {
     try {
       dispatch(fetchProductAdvancedStart());

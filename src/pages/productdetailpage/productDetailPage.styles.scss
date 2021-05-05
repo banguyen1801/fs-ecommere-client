@@ -1,0 +1,40 @@
+.product-detail {
+  font-family: var(--ff-primary);
+  height: 130vh;
+  padding: 0px 10% 0px 10%;
+
+  .detail-panel {
+    height: 50%;
+    display: flex;
+
+    .detail-center {
+      flex: 1 1 93%;
+      display: flex;
+
+      .extra-images {
+        flex: 0 1 7%;
+        margin-right: 5px;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        &__image {
+          flex-basis: 100%;
+          border: 0.5px solid grey;
+        }
+      }
+
+      &__main-image {
+        flex: 0 1 35%;
+        background-color: khaki;
+        margin-right: 5px;
+      }
+    }
+
+    .detail-right {
+      font-size: 14px;
+      background-color: #f9f9f9;
+      flex: 0 1 7%;
+    }
+  }
+}

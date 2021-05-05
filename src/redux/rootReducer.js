@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import userReducer from './user/user.reducer';
 import modalReducer from './modal/modal.reducer';
 import productReducer from './product/product.reducer';
+import cartReducer from './cart/cart.reducer';
 
 // add cart to whitelist to persist redux state
 const persistConfig = {
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   modal: modalReducer,
   product: productReducer,
+  cart: cartReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
