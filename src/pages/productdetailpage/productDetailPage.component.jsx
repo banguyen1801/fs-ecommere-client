@@ -19,7 +19,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     dispatch(fetchOneProductAsync({ id }));
     // eslint-disable-next-line
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="product-detail">
