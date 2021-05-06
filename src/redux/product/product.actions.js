@@ -63,7 +63,6 @@ export const fetchProductAdvancedAsync = ({
   currentPage,
   currentCategories,
 }) => {
-  console.log('thunk', currentSort, currentPage, currentCategories);
   return async (dispatch) => {
     try {
       dispatch(fetchProductAdvancedStart());
@@ -77,9 +76,38 @@ export const fetchProductAdvancedAsync = ({
           },
         }
       );
-      if (product) dispatch(fetchProductAdvancedSuccess(product.data));
+      if (!product.length) dispatch(fetchProductAdvancedSuccess(product.data));
     } catch (err) {
       dispatch(fetchAllProductFailed(err.message));
+    }
+  };
+};
+
+export const fetchOneProductStart = () => ({
+  type: productActionTypes.FETCH_ONE_PRODUCT_START,
+});
+
+export const fetchOneProductFailed = (errMessage) => ({
+  type: productActionTypes.FETCH_ONE_PRODUCT_FAILED,
+  payload: errMessage,
+});
+
+export const fetchOneProductSuccess = (product) => ({
+  type: productActionTypes.FETCH_ONE_PRODUCT_SUCCESS,
+  payload: product,
+});
+
+export const fetchOneProductAsync = (params) => {
+  return async (dispatch) => {
+    try {
+      dispatch(fetchOneProductStart());
+      const singleProduct = await axios.get(
+        `http://localhost:5000/api/products/${params.id}`
+      );
+
+      if (singleProduct) dispatch(fetchOneProductSuccess(singleProduct.data));
+    } catch (err) {
+      throw new Error(err.message);
     }
   };
 };

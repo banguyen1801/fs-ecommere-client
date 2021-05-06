@@ -6,17 +6,7 @@ import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
-const sizes = ['S', 'M', 'L'];
-const colors = [
-  '#ff5f6d',
-  '#ffc371',
-  '#5f6dff',
-  '#ffa15f',
-  '#3d3d3f',
-  '#ededed',
-];
-
-const ProductInfo = () => {
+const ProductInfo = ({ item }) => {
   const [value, setValue] = useState(2);
 
   //handle color select
@@ -27,7 +17,7 @@ const ProductInfo = () => {
     }
   };
   //handle size select
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedColor, setSelectedColor] = useState(item.color[0]);
   const onColorChange = (newColor) => {
     if (newColor !== selectedColor) {
       setSelectedColor(newColor);
@@ -46,8 +36,8 @@ const ProductInfo = () => {
 
   return (
     <div className="product-info">
-      <div className="product-info__name">Stretch Linen Mini Dress</div>
-      <div className="product-info__price">{priceFormatter(69)}</div>
+      <div className="product-info__name">{item.name}</div>
+      <div className="product-info__price">{priceFormatter(item.price)}</div>
       <div className="product-info__reviews">
         <Box
           component="fieldset"
@@ -68,9 +58,9 @@ const ProductInfo = () => {
       </div>
       <div className="product-info__size">
         <div className="legend">Size</div>
-        {sizes.length === 0
+        {item.size.length === 0
           ? null
-          : sizes.map((size, id) => (
+          : item.size.map((size, id) => (
               <button
                 key={id}
                 className={`${
@@ -84,9 +74,9 @@ const ProductInfo = () => {
       </div>
       <div className="product-info__color">
         <div className="legend">Color</div>
-        {colors.length === 0
+        {item.color.length === 0
           ? null
-          : colors.map((color, id) => (
+          : item.color.map((color, id) => (
               <button
                 key={id}
                 style={{ backgroundColor: color }}
@@ -110,6 +100,7 @@ const ProductInfo = () => {
             onClick={() => onQuantityChange(quantity + 1)}
           ></span>
         </div>
+        <div className="stock">{item.stock} left</div>
       </div>
       <button className="product-info__add-to-cart-button">Add to cart</button>
       <div className="product-info__minor-detail">

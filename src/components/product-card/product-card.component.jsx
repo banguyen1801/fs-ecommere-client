@@ -1,11 +1,8 @@
 import './product-card.styles.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ProductCard = ({
-  imageUrl,
-  productName = 'product name',
-  price = 'price',
-}) => {
+const ProductCard = ({ item: { imageUrl, name, price, _id } }) => {
   return (
     <div className="product-card">
       <div
@@ -14,9 +11,11 @@ const ProductCard = ({
         }}
         className="product-image"
       >
-        <button className="quick-shop-button">+ Quick Shop</button>
+        <Link to={`/products/${_id}`} className="quick-shop-link">
+          + Quick Shop
+        </Link>
       </div>
-      <div className="product-name">{productName}</div>
+      <div className="product-name">{name}</div>
       <div className="product-price">${price}</div>
     </div>
   );

@@ -15,7 +15,7 @@
     background-size: cover;
     background-position: center;
 
-    .quick-shop-button {
+    .quick-shop-link {
       display: none;
       position: absolute;
       height: 20%;
@@ -27,8 +27,10 @@
     }
   }
   .product-image:hover {
-    .quick-shop-button {
-      display: block;
+    .quick-shop-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   .product-name {
