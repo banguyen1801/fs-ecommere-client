@@ -1,8 +1,33 @@
 import './cart-checkout.styles.scss';
 import React from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
 
-const CartCheckout = ({ total }) => {
+import { clearCart } from '../../redux/cart/cart.actions';
+
+const CartCheckout = ({ total, cart }) => {
+  console.log('checkout', cart);
+  const userId = useSelector((state) => state.user.user._id);
+  const dispatch = useDispatch();
+
+  const handleCreateOrder = async ({ cart, id }) => {
+    if (!cart || cart.length === 0) return;
+    try {
+      const newOrder = await axios.post('http://localhost:5000/api/orders', {
+        params: {
+          user_id: id,
+          items: cart,
+        },
+      });
+      dispatch(clearCart());
+      console.log('new order', newOrder.data);
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  };
+
   return (
     <div className="cart-checkout">
       <div className="cart-checkout__header">Total</div>
@@ -21,7 +46,12 @@ const CartCheckout = ({ total }) => {
             <span>{priceFormatter(total)}</span>
           </div>
         </div>
-        <button className="checkout-button">Check Out</button>
+        <button
+          className="checkout-button"
+          onClick={() => handleCreateOrder({ id: userId, cart })}
+        >
+          Check Out
+        </button>
       </div>
     </div>
   );

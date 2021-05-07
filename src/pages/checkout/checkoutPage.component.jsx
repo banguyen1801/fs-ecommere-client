@@ -10,7 +10,7 @@ const CheckoutPage = () => {
   const cartTotal = cart.reduce((acc, current) => {
     return acc + current.price * current.quantity;
   }, 0);
-  console.log('cart', cart);
+
   return (
     <div className="checkout-page">
       <div className="checkout-legend">
@@ -26,14 +26,14 @@ const CheckoutPage = () => {
             <div className="amount">Amount</div>
           </div>
           <div className="cart-preview__items">
-            {cart.length === 0
-              ? null
-              : cart.map((cartItem, id) => (
-                  <CartItem key={id} item={cartItem} />
-                ))}
+            {cart.length === 0 ? (
+              <span>Your cart is empty.</span>
+            ) : (
+              cart.map((cartItem, id) => <CartItem key={id} item={cartItem} />)
+            )}
           </div>
         </div>
-        <CartCheckout total={cartTotal} />
+        <CartCheckout total={cartTotal} cart={cart} />
       </div>
     </div>
   );

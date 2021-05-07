@@ -13,7 +13,6 @@ import { fetchOneProductAsync } from '../../redux/product/product.actions';
 const ProductDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.product.isLoading);
   const oneProduct = useSelector((state) => state.product.singleProduct);
 
   useEffect(() => {
@@ -21,37 +20,36 @@ const ProductDetailPage = () => {
     // eslint-disable-next-line
   }, [dispatch]);
 
-  return (
+  const { imageUrl = [] } = oneProduct || {};
+
+  return !imageUrl.length ? null : (
     <div className="product-detail">
       <BreadCrump />
-      {loading ? null : (
-        <div className="detail-panel">
-          <div className="detail-center">
-            <div className="extra-images">
-              {oneProduct.imageUrl.length === 0
-                ? null
-                : oneProduct.imageUrl.map((url, id) => (
-                    <div
-                      key={id}
-                      style={{ backgroundImage: `url(${url})` }}
-                      className="extra-images__image"
-                    ></div>
-                  ))}
-            </div>
-            <div
-              style={{
-                backgroundImage: `url(${oneProduct.imageUrl[0]})`,
-              }}
-              className="detail-center__main-image"
-            ></div>
-            <ProductInfo item={oneProduct} />
+      <div className="detail-panel">
+        <div className="detail-center">
+          <div className="extra-images">
+            {imageUrl.length === 0
+              ? null
+              : imageUrl.map((url, id) => (
+                  <div
+                    key={id}
+                    style={{ backgroundImage: `url(${url})` }}
+                    className="extra-images__image"
+                  ></div>
+                ))}
           </div>
-          <div className="detail-right">
-            <div className="detail-right__legend">More from Zara</div>
-          </div>
+          <div
+            style={{
+              backgroundImage: `url(${imageUrl.length && imageUrl[0]})`,
+            }}
+            className="detail-center__main-image"
+          ></div>
+          <ProductInfo item={oneProduct} />
         </div>
-      )}
-
+        <div className="detail-right">
+          <div className="detail-right__legend">More from Zara</div>
+        </div>
+      </div>
       <ReviewPanel />
       <SuggestionPanel />
     </div>

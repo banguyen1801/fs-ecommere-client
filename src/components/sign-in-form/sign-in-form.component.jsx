@@ -101,7 +101,7 @@ const SignInForm = () => {
         </span>
       </div>
       <div className="si-form__button-field">
-        <Link to="/">
+        <Link to="/customers">
           <button className="si-form__login-button" onClick={() => login()}>
             Login
           </button>

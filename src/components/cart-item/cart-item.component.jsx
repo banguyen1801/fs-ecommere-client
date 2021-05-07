@@ -11,7 +11,7 @@ const CartItem = ({
   item: { imageUrl, name, price, quantity, color, size },
 }) => {
   const dispatch = useDispatch();
-  console.log('cart Item', item);
+
   return (
     <div className="cart-item">
       <div

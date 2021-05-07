@@ -12,7 +12,7 @@ const CartDropDown = () => {
       <div className="cart-items" />
       <Link
         className="cart-link"
-        to="/checkout"
+        to="/customers/checkout"
         onClick={() => dispatch(toggleCartHidden())}
       >
         View Cart

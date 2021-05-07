@@ -12,7 +12,7 @@ const ProductCard = ({ item: { imageUrl, name, price, _id } }) => {
         }}
         className="product-image"
       >
-        <Link to={`/products/${_id}`} className="quick-shop-link">
+        <Link to={`/customers/products/${_id}`} className="quick-shop-link">
           + Quick Shop
         </Link>
       </div>

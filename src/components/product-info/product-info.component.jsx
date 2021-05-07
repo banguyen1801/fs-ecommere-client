@@ -23,7 +23,6 @@ const ProductInfo = ({ item }) => {
     quantity: 1,
     stock: item.stock,
   });
-  console.log(cartItem);
 
   //handle color select
   const handleSizeChange = (newSize) => {

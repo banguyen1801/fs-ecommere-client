@@ -16,8 +16,8 @@ const UserIcon = () => {
     <div className="user-icon-dropdown">
       <div className="dropbtn">User Icon</div>
       <div className="dropdown-content">
-        <Link to="/">User Profile</Link>
-        <Link to="/" onClick={() => logOut()}>
+        <Link to="/customers">User Profile</Link>
+        <Link to="/customers" onClick={() => logOut()}>
           Log out
         </Link>
       </div>

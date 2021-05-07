@@ -15,7 +15,7 @@ const HeaderTop = () => {
   return (
     <div className="header-top">
       <HeaderInput />
-      <Link to="/">
+      <Link to="/customers">
         <img
           className="header-top__shop-logo"
           src="/images/logo.svg"
