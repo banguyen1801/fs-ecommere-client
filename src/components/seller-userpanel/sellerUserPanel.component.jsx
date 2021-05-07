@@ -15,11 +15,11 @@ const SellerUserPanel = () => {
         </div>
         <div className="noti-area">
           <div className="noti-wrapper">
-            <span class="icon icon-email"></span>
+            <span className="icon icon-email"></span>
             <span className="noti-counter-email">0</span>
           </div>
           <div className="noti-wrapper">
-            <span class="icon icon-bell"></span>
+            <span className="icon icon-bell"></span>
             <span className="noti-counter-bell">0</span>
           </div>
         </div>

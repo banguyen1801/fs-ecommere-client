@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import SellerSidebar from '../../components/seller-sidebar/seller-sidebar.component';
 import SellerOrderPage from '../seller-orderpage/sellerOrderPage.component';
-import SellerUserPanel from '../seller-userpanel/sellerUserPanel.component';
+import SellerUserPanel from '../../components/seller-userpanel/sellerUserPanel.component';
 
 const SellerPage = () => {
   return (

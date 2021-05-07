@@ -1,7 +1,7 @@
 .seller-user-panel {
   background-color: lightgreen;
   position: absolute;
-  right: 0;
+  right: 1%;
   height: 10%;
   width: 20%;
   flex-shrink: 1;
@@ -23,6 +23,12 @@
 
       .seller-user-panel__dropdown-icon__user-name {
         font-weight: 600;
+      }
+
+      .icon-user-circle {
+        box-shadow: 0 5px 20px 0 rgba(61, 61, 63, 0.2);
+        border: solid 0.5px var(--white);
+        border-radius: 9000px;
       }
     }
 

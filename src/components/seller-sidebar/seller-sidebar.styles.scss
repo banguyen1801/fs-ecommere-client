@@ -1,5 +1,43 @@
 .seller-sidebar {
   background-color: pink;
+  flex: 0 1 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding-top: 1%;
+  flex-wrap: wrap;
 
-  flex: 0 1 20%;
+  .seller-sidebar__shop-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .seller-sidebar__links {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto;
+    align-items: flex-start;
+    font-weight: 500;
+
+    .seller-sidebar__link:first-child {
+      margin-top: 3rem;
+      border-top: 2px solid black;
+    }
+
+    .seller-sidebar__link {
+      color: #3d3d3f;
+      margin-top: 2rem;
+      line-height: 1.47;
+
+      .icon {
+        margin-right: 1rem;
+      }
+    }
+    .seller-sidebar__link:hover {
+      text-decoration: none;
+      color: var(--color-btn-active);
+    }
+  }
 }
