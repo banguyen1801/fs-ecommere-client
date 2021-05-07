@@ -2,7 +2,7 @@ import './App.styles.scss';
 import { Route, withRouter, Switch } from 'react-router-dom';
 
 import Homepage from './pages/homepage/homepage.component';
-import SellerPage from './pages/seller/sellerPage.component';
+import SellerPage from './pages/sellerpage/sellerPage.component';
 
 function App() {
   return (

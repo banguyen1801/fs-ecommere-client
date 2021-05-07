@@ -1,0 +1,92 @@
+.seller-user-panel {
+  background-color: lightgreen;
+  position: absolute;
+  right: 0;
+  height: 10%;
+  width: 20%;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+
+  .seller-user-panel__area {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+
+    .seller-user-panel__dropdown-icon {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 14px;
+      width: 50%;
+
+      .seller-user-panel__dropdown-icon__user-name {
+        font-weight: 600;
+      }
+    }
+
+    .noti-area {
+      .noti-wrapper {
+        display: inline;
+        position: relative;
+        padding-top: 10px;
+
+        .icon {
+          opacity: 0.7;
+        }
+
+        .icon-bell {
+          padding-left: 1rem;
+        }
+
+        .noti-counter-email {
+          background-color: var(--color-btn-active);
+          border: 2px solid var(--color-btn-active);
+          border-radius: 50%;
+          color: white;
+          font-size: 10px;
+          height: 18px;
+          left: 7px;
+          position: absolute;
+          text-align: center;
+          top: 0;
+          width: 18px;
+        }
+
+        .noti-counter-bell {
+          background-color: var(--color-btn-active);
+          border: 2px solid var(--color-btn-active);
+          border-radius: 50%;
+          color: white;
+          font-size: 10px;
+          height: 18px;
+          left: 23px;
+          position: absolute;
+          text-align: center;
+          top: 0;
+          width: 18px;
+        }
+      }
+    }
+  }
+
+  .seller-user-panel__dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    bottom: -50%;
+    left: 10%;
+
+    z-index: 2;
+  }
+}
+.seller-user-panel:hover .seller-user-panel__dropdown-content {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: #202124;
+  }
+}
