@@ -26,6 +26,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-circle:before {
+  content: '\e902';
+}
+
 .icon-x-altx-alt:before {
   content: '\e903';
 }

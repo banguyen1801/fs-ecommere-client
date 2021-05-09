@@ -1,39 +1,15 @@
 import React from 'react';
 import './sellerOrderPage.styles.scss';
 
+import OrderTableSorters from '../../components/order-table-sorters/order-table-sorters.component';
+import SellerOrderTable from '../../components/seller-order-table/seller-order-table.component';
+
 const SellerOrderPage = () => {
   return (
     <div className="seller-order-page">
       <div className="seller-order-page__title">Orders</div>
-
-      <div className="seller-order-page__table-sorters">
-        <div className="seller-order-page__table-sorters__title">
-          <span>ORDERED DATE</span>
-        </div>
-        <div className="seller-order-page__table-sorters__calendar-input">
-          <span>01/01/2020 - 01/01/2021</span>
-          <span className="icon icon-calendar"></span>
-        </div>
-        <div className="seller-order-page__table-sorters__today-input">
-          <span>Today</span>
-        </div>
-        <div className="seller-order-page__table-sorters__yesterday-input">
-          <span>Today</span>
-        </div>
-        <div className="seller-order-page__table-sorters__input-field">
-          <input
-            className="seller-order-page__table-sorters__input"
-            type="text"
-            placeholder="search"
-          />
-          <span className="icon icon-searchbar"></span>
-        </div>
-
-        <div className="seller-order-page__table-sorters__exports">
-          <span className="icon icon-download"></span>
-          <span>Export</span>
-        </div>
-      </div>
+      <OrderTableSorters />
+      <SellerOrderTable />
     </div>
   );
 };
