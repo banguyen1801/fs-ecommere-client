@@ -1,0 +1,126 @@
+@mixin box-shadow {
+  border-radius: 2px;
+  border: solid 1px #ededed;
+  background-color: white;
+  height: 100%;
+}
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.seller-product-view-page__table-sorters {
+  height: 7%;
+  align-items: center;
+  font-size: 14px;
+
+  display: flex;
+
+  .seller-product-view-page__table-sorters__title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #acacac;
+    flex: 0 1 10%;
+  }
+  .seller-product-view-page__table-sorters__date-dropdown {
+    @include box-shadow;
+    position: relative;
+    border: 1px solid black;
+    width: 20%;
+
+    .icon-chevron-down {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+    .date-dropdown-button {
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      border: none;
+      text-align: left;
+    }
+    .date-dropdown-button:hover {
+      background-color: #ededed;
+    }
+
+    .date-dropdown-button__contents {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 6px 8px;
+      z-index: 1;
+
+      div:hover {
+        background-color: #ededed;
+        cursor: pointer;
+      }
+    }
+  }
+  .seller-product-view-page__table-sorters__date-dropdown:hover
+    .date-dropdown-button__contents {
+    display: block;
+  }
+
+  .seller-product-view-page__table-sorters__input-field {
+    position: relative;
+    margin-left: auto;
+    margin-right: 1rem;
+    flex: 0 1 20%;
+
+    .seller-product-view-page__table-sorters__input {
+      color: #202124;
+      width: 100%;
+      padding: 0.9rem 0.5rem 0.7rem 2.5rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 16px;
+      @include box-shadow;
+    }
+
+    .icon-searchbar {
+      opacity: 0.7;
+      position: absolute;
+      left: 0;
+      padding: 1.2rem 14px;
+    }
+  }
+
+  .seller-product-view-page__add-product {
+    @include box-shadow;
+    position: relative;
+    width: 15%;
+    margin-right: 1rem;
+
+    .icon-add-solid {
+      color: white;
+      position: absolute;
+      left: 0;
+      padding: 1.1rem 0.7rem;
+    }
+
+    .add-product-button {
+      border: none;
+      width: 100%;
+      height: 100%;
+      color: white;
+      font-weight: 500;
+      background-color: var(--color-btn-active);
+    }
+    .add-product-button:hover {
+      background-color: #ededed;
+    }
+  }
+
+  .seller-product-view-page__table-sorters__exports {
+    @include box-shadow;
+    @include center;
+    flex: 0 1 8%;
+    color: var(--color-btn-active);
+    cursor: pointer;
+  }
+}

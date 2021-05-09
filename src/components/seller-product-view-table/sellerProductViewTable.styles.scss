@@ -4,12 +4,12 @@
   background-color: white;
 }
 
-.seller-order-page__table-wrapper {
+.seller-product-view-page__table-wrapper {
   margin: 1rem 1rem 1rem 0rem;
   height: 80%;
   width: 100%;
 
-  .seller-order-page__table {
+  .seller-product-view-page__table {
     @include table;
     height: 90%;
     width: 100%;
@@ -36,43 +36,20 @@
     .table-row {
       white-space: nowrap;
     }
-    .col-id {
-      width: 22%;
-    }
-    .col-create-at {
-      width: 18%;
-    }
-    .col-detail {
+    .col-name {
       width: 30%;
     }
-    .col-total {
-      width: 10%;
+    .col-sold {
+      width: 13%;
     }
-    .col-status {
-      width: 10%;
-
-      .status-button {
-        pointer-events: none;
-        border-radius: 9999px;
-        border: none;
-        font-size: 10px;
-        height: 1.5rem;
-        width: 5rem;
-        color: white;
-      }
-      .Completed {
-        background-color: #82bf11;
-      }
-      .Pending {
-        background-color: #fbba4e;
-      }
-      .Canceled {
-        background-color: #f05d62;
-      }
+    .col-create-at {
+      width: 20%;
     }
-
+    .col-profit {
+      width: 15%;
+    }
     .col-action {
-      width: 6%;
+      width: 7%;
       font-weight: 600;
 
       .order-status-dropdown {
@@ -91,6 +68,10 @@
 
           div:hover {
             background-color: #ededed;
+            cursor: pointer;
+          }
+          .icon {
+            margin-right: 1rem;
           }
         }
       }

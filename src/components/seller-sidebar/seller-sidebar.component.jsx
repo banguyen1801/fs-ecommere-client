@@ -7,7 +7,7 @@ const SellerSidebar = () => {
   return (
     <div className="seller-sidebar">
       <div className="seller-sidebar__shop-logo">
-        <Link to="/sellers">
+        <Link to="/sellers/products">
           <img
             className="seller-sidebar__logo"
             src="/images/logo.svg"

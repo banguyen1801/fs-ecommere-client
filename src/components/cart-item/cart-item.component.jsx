@@ -47,7 +47,7 @@ const CartItem = ({
           ></span>
         </div>
       </div>
-      <div className="amount">{priceFormatter(price)}</div>
+      <div className="amount">${priceFormatter(price)}</div>
     </div>
   );
 };

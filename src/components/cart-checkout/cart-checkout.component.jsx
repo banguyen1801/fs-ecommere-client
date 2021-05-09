@@ -39,11 +39,11 @@ const CartCheckout = ({ total, cart }) => {
           </div>
           <div className="detail">
             <span>Total product: </span>
-            <span>{priceFormatter(total)}</span>
+            <span>${priceFormatter(total)}</span>
           </div>
           <div className="detail total">
             <span>Subtotal</span>
-            <span>{priceFormatter(total)}</span>
+            <span>${priceFormatter(total)}</span>
           </div>
         </div>
         <button

@@ -311,7 +311,7 @@ const SellerOrderTable = () => {
       <table className="seller-order-page__table">
         <thead>
           <tr>
-            <th>ORDER ID</th>
+            <th className="first-column">ORDER ID</th>
             <th>ORDERED DATE</th>
             <th>DETAIL</th>
             <th>TOTAL ($)</th>
@@ -324,7 +324,7 @@ const SellerOrderTable = () => {
         <tbody>
           {dummyOrders.map(({ _id, createdAt, status }) => (
             <tr>
-              <td className="table-row col-id">{_id}</td>
+              <td className="first-column table-row col-id">{_id}</td>
               <td className="table-row col-create-at">{createdAt}</td>
               <td className="table-row col-detail">First item name...</td>
               <td className="table-row col-total">$1000</td>
