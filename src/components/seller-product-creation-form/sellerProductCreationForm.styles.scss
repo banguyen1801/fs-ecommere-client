@@ -1,0 +1,73 @@
+@mixin box-shadow {
+  border-radius: 2px;
+  border: solid 1px #ededed;
+  background-color: white;
+}
+
+.product-creation-form-wrapper {
+  font-family: var(--ff-primary);
+  width: 100%;
+  margin-top: 1rem;
+
+  .product-creation-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .seller-product-creation-row {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      align-items: center;
+
+      .upload-image-buttons {
+        width: 80%;
+        margin-left: auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .upload-button {
+          height: 25vh;
+          width: 23%;
+          background-color: #ededed;
+          border: 1px solid #ededed;
+          color: #acacac;
+        }
+        .upload-button:hover {
+          background-color: #acacac;
+          color: #f6f6f6;
+        }
+      }
+
+      .row-label {
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .input-field {
+        width: 80%;
+        margin-left: auto;
+        @include box-shadow;
+      }
+
+      .product-creation-form__button-secondary {
+        margin-left: auto;
+        color: var(--color-btn-active);
+        background-color: white;
+        width: 10rem;
+        height: 3rem;
+      }
+      .product-creation-form__button-primary {
+        margin-left: 5%;
+        background-color: var(--color-btn-active);
+        color: white;
+        width: 10rem;
+        height: 3rem;
+      }
+    }
+  }
+}

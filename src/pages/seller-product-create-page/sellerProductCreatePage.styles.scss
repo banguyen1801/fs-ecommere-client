@@ -1,0 +1,16 @@
+.product-creation-page {
+  flex: 0 1 85%;
+  position: relative;
+
+  .product-creation-page__title {
+    font-size: 28px;
+    font-weight: bold;
+    height: 10%;
+
+    .product-creation-page__title__bread-crump {
+      font-size: 14px;
+      font-weight: 500;
+      color: #3d3d3f;
+    }
+  }
+}

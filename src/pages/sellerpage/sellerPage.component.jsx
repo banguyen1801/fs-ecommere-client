@@ -6,7 +6,7 @@ import SellerSidebar from '../../components/seller-sidebar/seller-sidebar.compon
 import SellerOrderPage from '../seller-orderpage/sellerOrderPage.component';
 import SellerUserPanel from '../../components/seller-userpanel/sellerUserPanel.component';
 import SellerProductViewPage from '../seller-productviewpage/sellerProductViewPage.component';
-
+import SellerProductCreatePage from '../seller-product-create-page/sellerProductCreatePage.component';
 const SellerPage = () => {
   return (
     <div className="sellers-page">
@@ -16,6 +16,10 @@ const SellerPage = () => {
         <Route
           path="/sellers/products"
           component={SellerProductViewPage}
+        ></Route>
+        <Route
+          path="/sellers/addProducts"
+          component={SellerProductCreatePage}
         ></Route>
       </Switch>
       <SellerUserPanel />

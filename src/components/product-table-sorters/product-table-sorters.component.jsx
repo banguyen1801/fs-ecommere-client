@@ -1,5 +1,6 @@
 import './product-table-sorters.styles.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductTableSorters = () => {
   return (
@@ -26,10 +27,12 @@ const ProductTableSorters = () => {
         />
         <span className="icon icon-searchbar"></span>
       </div>
-      <div className="seller-product-view-page__add-product">
-        <span className="icon icon-add-solid"></span>
-        <button className="add-product-button">AddProduct</button>
-      </div>
+      <Link to="/sellers/addProducts">
+        <div className="seller-product-view-page__add-product">
+          <span className="icon icon-add-solid"></span>
+          <button className="add-product-button">AddProduct</button>
+        </div>
+      </Link>
       <div className="seller-product-view-page__table-sorters__exports">
         <span className="icon icon-download"></span>
         <span>Export</span>
