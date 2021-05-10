@@ -11,7 +11,7 @@
 
   .seller-order-page__table {
     @include table;
-    height: 90%;
+    height: 1%;
     width: 100%;
     thead {
       border-bottom: 1px solid #ededed;
@@ -24,6 +24,7 @@
       font-size: 12px;
       font-weight: bold;
     }
+
     td {
       font-size: 14px;
       line-height: 20px;

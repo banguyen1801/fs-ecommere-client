@@ -1,311 +1,30 @@
 import './seller-order-table.styles.scss';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import SellerPagination from '../seller-pagination/seller-pagination.component';
-const dummyOrders = [
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979583980b654fa470d184',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:47.187Z',
-    updatedAt: '2021-05-09T07:55:47.187Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979584980b654fa470d185',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:48.508Z',
-    updatedAt: '2021-05-09T07:55:48.508Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-  {
-    items: [
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-      {
-        color: '#ff5f6d',
-        id: '609223376cac373908e6a3b2',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        name: 'Zara Party Dress',
-        price: 300,
-        quantity: 2,
-        size: 'S',
-        stock: 2,
-      },
-    ],
-    status: 'Pending',
-    _id: '60979557980b654fa470d183',
-    user_id: '607d63507d9375334c04b3f9',
-    createdAt: '2021-05-09T07:55:03.176Z',
-    updatedAt: '2021-05-09T07:55:03.176Z',
-    __v: 0,
-  },
-];
-const SellerOrderTable = () => {
+import { updateOrderStatusAsync } from '../../redux/order/order.actions';
+
+const SellerOrderTable = ({ ordersArray }) => {
+  const dispatch = useDispatch();
+  const orderTotalCalculator = (itemsArray) => {
+    return itemsArray.reduce((acc, current) => {
+      return acc + current.price * current.quantity;
+    }, 0);
+  };
+
+  const handleCompletedOrder = (id, currentStatus) => {
+    if (currentStatus === 'Pending') {
+      dispatch(updateOrderStatusAsync(id, 'Completed'));
+    }
+  };
+  const handleCanceledOrder = (id, currentStatus) => {
+    if (currentStatus === 'Pending') {
+      dispatch(updateOrderStatusAsync(id, 'Canceled'));
+    }
+  };
+
   return (
     <div className="seller-order-page__table-wrapper">
       <table className="seller-order-page__table">
@@ -322,12 +41,20 @@ const SellerOrderTable = () => {
           </tr>
         </thead>
         <tbody>
-          {dummyOrders.map(({ _id, createdAt, status }) => (
-            <tr>
+          {ordersArray.map(({ _id, createdAt, status, items }, index) => (
+            <tr
+              className="seller-order-page__table-data-row"
+              style={{}}
+              key={_id}
+            >
               <td className="first-column table-row col-id">{_id}</td>
               <td className="table-row col-create-at">{createdAt}</td>
-              <td className="table-row col-detail">First item name...</td>
-              <td className="table-row col-total">$1000</td>
+              <td className="table-row col-detail">
+                {items[0].name}[{items[0].size}] X {items[0].quantity}
+              </td>
+              <td className="table-row col-total">
+                ${orderTotalCalculator(items)}
+              </td>
               <td className="table-row col-status">
                 <button className={`${status} status-button`}>{status}</button>
               </td>
@@ -336,11 +63,11 @@ const SellerOrderTable = () => {
                   <span>Action</span>
                   <span className="icon icon-chevron-down"></span>
                   <div className="order-status-dropdown__contents">
-                    <div>
+                    <div onClick={() => handleCompletedOrder(_id, status)}>
                       <FiberManualRecordIcon style={{ color: '#82bf11' }} />
                       Mark as Completed
                     </div>
-                    <div>
+                    <div onClick={() => handleCanceledOrder(_id, status)}>
                       <FiberManualRecordIcon style={{ color: '#f05d62' }} />
                       Mark as Canceled
                     </div>
