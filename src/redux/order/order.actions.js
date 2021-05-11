@@ -15,11 +15,13 @@ export const fetchAllOrdersFailed = (errMessage) => ({
   payload: errMessage,
 });
 
-export const fetchAllOrdersAsync = () => {
+export const fetchAllOrdersAsync = (page) => {
   return async (dispatch) => {
     dispatch(fetchAllOrdersStart());
     try {
-      const response = await axios.get(`http://localhost:5000/api/orders/all`);
+      const response = await axios.get(
+        `http://localhost:5000/api/orders/advanced?page=${page}`
+      );
       if (!response.length) dispatch(fetchAllOrdersSuccess(response.data));
     } catch (err) {
       dispatch(fetchAllOrdersFailed(err.message));
@@ -46,7 +48,7 @@ export const updateOrderStatusAsync = (id, newStatus) => {
           },
         }
       );
-      if (!response.data.length) {
+      if (!response.data.error) {
         dispatch(updateOrderStatusSuccess(response.data));
       }
     } catch (err) {
@@ -54,3 +56,8 @@ export const updateOrderStatusAsync = (id, newStatus) => {
     }
   };
 };
+
+export const setCurrentPage = (page) => ({
+  type: orderActionType.SET_CURRENT_PAGE,
+  payload: page,
+});

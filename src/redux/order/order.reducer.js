@@ -3,6 +3,8 @@ const initialState = {
   ordersInfo: [],
   isLoading: true,
   errMessage: '',
+  currentPage: 1,
+  maxPage: 1,
 };
 
 const OrderReducer = (state = initialState, action) => {
@@ -16,7 +18,8 @@ const OrderReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        ordersInfo: action.payload,
+        ordersInfo: action.payload.order,
+        maxPage: action.payload.maxPage,
       };
     case orderActionType.FETCH_ALL_ORDERS_FAILED:
       return {
@@ -37,7 +40,11 @@ const OrderReducer = (state = initialState, action) => {
           ...state.ordersInfo.slice(index + 1),
         ],
       };
-
+    case orderActionType.SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
     default:
       return state;
   }

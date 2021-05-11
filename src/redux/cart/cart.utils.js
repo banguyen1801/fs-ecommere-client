@@ -1,9 +1,9 @@
 export const addItemToCart = (cartItems, cartItemToAdd) => {
   const existingCartItem = cartItems.find(
-    (cartItem) =>
-      cartItem.id === cartItemToAdd.id &&
-      cartItem.color === cartItemToAdd.color &&
-      cartItem.size === cartItemToAdd.size
+    (cartItem) => cartItem.id === cartItemToAdd.id
+    // &&
+    // cartItem.color === cartItemToAdd.color &&
+    // cartItem.size === cartItemToAdd.size
   );
 
   if (existingCartItem) {
@@ -26,10 +26,10 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
 export const addOneItem = (cartItems, cartItemToAdd) => {
   const existingCartItem = cartItems.find(
-    (cartItem) =>
-      cartItem.id === cartItemToAdd.id &&
-      cartItem.color === cartItemToAdd.color &&
-      cartItem.size === cartItemToAdd.size
+    (cartItem) => cartItem.id === cartItemToAdd.id
+    // &&
+    // cartItem.color === cartItemToAdd.color &&
+    // cartItem.size === cartItemToAdd.size
   );
 
   if (existingCartItem) {
@@ -49,10 +49,10 @@ export const addOneItem = (cartItems, cartItemToAdd) => {
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
   const existingCartItem = cartItems.find(
-    (cartItem) =>
-      cartItem.id === cartItemToRemove.id &&
-      cartItem.color === cartItemToRemove.color &&
-      cartItem.size === cartItemToRemove.size
+    (cartItem) => cartItem.id === cartItemToRemove.id
+    // &&
+    // cartItem.color === cartItemToRemove.color &&
+    // cartItem.size === cartItemToRemove.size
   );
 
   if (existingCartItem.quantity === 1) {

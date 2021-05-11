@@ -6,7 +6,8 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import SellerPagination from '../seller-pagination/seller-pagination.component';
 import { updateOrderStatusAsync } from '../../redux/order/order.actions';
 
-const SellerOrderTable = ({ ordersArray }) => {
+const SellerOrderTable = ({ ordersArray, ...tableProps }) => {
+  console.log('table props', tableProps);
   const dispatch = useDispatch();
   const orderTotalCalculator = (itemsArray) => {
     return itemsArray.reduce((acc, current) => {
@@ -42,11 +43,7 @@ const SellerOrderTable = ({ ordersArray }) => {
         </thead>
         <tbody>
           {ordersArray.map(({ _id, createdAt, status, items }, index) => (
-            <tr
-              className="seller-order-page__table-data-row"
-              style={{}}
-              key={_id}
-            >
+            <tr className="seller-order-page__table-data-row" key={_id}>
               <td className="first-column table-row col-id">{_id}</td>
               <td className="table-row col-create-at">{createdAt}</td>
               <td className="table-row col-detail">
@@ -78,7 +75,7 @@ const SellerOrderTable = ({ ordersArray }) => {
           ))}
         </tbody>
       </table>
-      <SellerPagination />
+      <SellerPagination {...tableProps} />
     </div>
   );
 };
