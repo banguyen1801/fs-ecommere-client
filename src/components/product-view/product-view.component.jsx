@@ -5,12 +5,10 @@ import { useSelector } from 'react-redux';
 
 import ProductCard from '../product-card/product-card.component';
 
-const ProductView = () => {
-  const productList = useSelector((state) => state.product.products);
-
+const ProductView = ({ productsList }) => {
   return (
     <div className="product-view">
-      {productList.map((productItem) => (
+      {productsList.map((productItem) => (
         <ProductCard key={productItem._id} item={productItem} />
       ))}
     </div>
