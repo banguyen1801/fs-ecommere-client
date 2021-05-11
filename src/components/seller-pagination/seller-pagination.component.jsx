@@ -6,6 +6,7 @@ import Pagination from '@material-ui/lab/Pagination';
 
 const SellerPagination = ({
   handlePageChange,
+
   currentPage = 1,
   maxPage = 5,
 }) => {

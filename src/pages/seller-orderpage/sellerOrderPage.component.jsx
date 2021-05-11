@@ -23,18 +23,20 @@ const SellerOrderPage = () => {
   }, [dispatch, currentPage]);
   console.log(orderStore);
 
-  return isLoading ? (
-    <span>Loading</span>
-  ) : (
+  return (
     <div className="seller-order-page">
       <div className="seller-order-page__title">Orders</div>
       <OrderTableSorters />
-      <SellerOrderTable
-        ordersArray={ordersInfo}
-        currentPage={currentPage}
-        maxPage={maxPage}
-        handlePageChange={handlePageChange}
-      />
+      {isLoading ? (
+        <span>Loading</span>
+      ) : (
+        <SellerOrderTable
+          ordersArray={ordersInfo}
+          currentPage={currentPage}
+          maxPage={maxPage}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };

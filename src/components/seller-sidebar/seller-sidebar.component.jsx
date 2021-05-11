@@ -20,11 +20,19 @@ const SellerSidebar = () => {
           <span className="icon icon-insert_chart"></span>
           Overview
         </Link>
-        <Link to="/sellers" className="seller-sidebar__link" href="#services">
+        <Link
+          to="/sellers/orders"
+          className="seller-sidebar__link"
+          href="#services"
+        >
           <span className="icon icon-shopping-cart"></span>
           Orders
         </Link>
-        <Link to="/sellers" className="seller-sidebar__link" href="#clients">
+        <Link
+          to="/sellers/products"
+          className="seller-sidebar__link"
+          href="#clients"
+        >
           <span className="icon icon-th-list"></span>
           Products
         </Link>

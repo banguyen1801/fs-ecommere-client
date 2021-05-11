@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SellerPagination from '../../components/seller-pagination/seller-pagination.component';
 import productActionTypes from './product.types';
 
 export const fetchAllProductStart = () => ({
@@ -108,6 +109,50 @@ export const fetchOneProductAsync = (params) => {
       if (singleProduct) dispatch(fetchOneProductSuccess(singleProduct.data));
     } catch (err) {
       throw new Error(err.message);
+    }
+  };
+};
+
+export const sellerSetCurrentPage = (newPage) => ({
+  type: productActionTypes.SELLER_SET_CURRENT_PAGE,
+  payload: newPage,
+});
+
+export const sellerSetProductPerPage = (newPPP) => ({
+  type: productActionTypes.SELLER_SET_PRODUCT_PER_PAGE,
+  payload: newPPP,
+});
+
+export const sellerFetchProductStart = () => ({
+  type: productActionTypes.SELLER_FETCH_PRODUCT_START,
+});
+
+export const sellerFetchProductFailed = (errMessage) => ({
+  type: productActionTypes.SELLER_FETCH_PRODUCT_FAILED,
+  payload: errMessage,
+});
+
+export const sellerFetchProductSuccess = (product) => ({
+  type: productActionTypes.SELLER_FETCH_PRODUCT_SUCCESS,
+  payload: product,
+});
+
+export const sellerFetchProductAsync = (currentPage, limit) => {
+  return async (dispatch) => {
+    dispatch(sellerFetchProductStart());
+    try {
+      const response = await axios.get(
+        'http://localhost:5000/api/products/all',
+        {
+          params: {
+            page: currentPage,
+            limit: limit,
+          },
+        }
+      );
+      dispatch(sellerFetchProductSuccess(response.data));
+    } catch (err) {
+      dispatch(sellerFetchProductFailed(err.message));
     }
   };
 };

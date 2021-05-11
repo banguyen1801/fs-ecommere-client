@@ -20,19 +20,20 @@ const ProductTableSorters = () => {
         </div>
       </div>
       <div className="seller-product-view-page__table-sorters__input-field">
+        <span className="icon icon-searchbar"></span>
         <input
           className="seller-product-view-page__table-sorters__input"
           type="text"
           placeholder="search"
         />
-        <span className="icon icon-searchbar"></span>
       </div>
-      <Link to="/sellers/addProducts">
-        <div className="seller-product-view-page__add-product">
-          <span className="icon icon-add-solid"></span>
-          <button className="add-product-button">AddProduct</button>
-        </div>
-      </Link>
+
+      <div className="seller-product-view-page__add-product">
+        <Link to="/sellers/addProducts"></Link>
+        <span className="icon icon-add-solid"></span>
+        <button className="add-product-button">AddProduct</button>
+      </div>
+
       <div className="seller-product-view-page__table-sorters__exports">
         <span className="icon icon-download"></span>
         <span>Export</span>

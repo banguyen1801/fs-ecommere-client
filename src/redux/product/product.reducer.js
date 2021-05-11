@@ -7,6 +7,13 @@ const initialState = {
   currentSort: 'Popularity',
   currentCategories: [],
   singleProduct: {},
+
+  sellerTableProducts: [],
+  sellerErrMessage: '',
+  sellerCurrentPage: 1,
+  sellerMaxPage: 1,
+  sellerIsLoading: true,
+  sellerProductPerPage: 10,
 };
 
 const productReducer = (state = initialState, action = {}) => {
@@ -53,6 +60,33 @@ const productReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentCategories: [action.payload],
+      };
+    case productActionTypes.SELLER_FETCH_PRODUCT_START:
+      return {
+        ...state,
+        sellerIsLoading: true,
+      };
+    case productActionTypes.SELLER_FETCH_PRODUCT_FAILED:
+      return {
+        ...state,
+        sellerErrMessage: action.payload,
+      };
+    case productActionTypes.SELLER_FETCH_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        sellerTableProducts: action.payload.product,
+        sellerMaxPage: action.payload.maxPage,
+        sellerIsLoading: false,
+      };
+    case productActionTypes.SELLER_SET_CURRENT_PAGE:
+      return {
+        ...state,
+        sellerCurrentPage: action.payload,
+      };
+    case productActionTypes.SELLER_SET_PRODUCT_PER_PAGE:
+      return {
+        ...state,
+        sellerProductPerPage: action.payload,
       };
     default:
       return state;
