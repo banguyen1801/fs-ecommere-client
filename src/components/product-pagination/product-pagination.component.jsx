@@ -30,7 +30,6 @@ const ProductPagination = () => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
-      console.log('current page', currentPage);
       dispatch(
         fetchProductAdvancedAsync({
           currentPage,

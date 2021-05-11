@@ -21,7 +21,6 @@ const SellerOrderPage = () => {
   useEffect(() => {
     dispatch(fetchAllOrdersAsync(currentPage));
   }, [dispatch, currentPage]);
-  console.log(orderStore);
 
   return (
     <div className="seller-order-page">

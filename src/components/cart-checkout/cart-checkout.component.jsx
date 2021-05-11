@@ -8,7 +8,6 @@ import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
 import { clearCart } from '../../redux/cart/cart.actions';
 
 const CartCheckout = ({ total, cart }) => {
-  console.log('checkout', cart);
   const userId = useSelector((state) => state.user.user._id);
   const dispatch = useDispatch();
 
@@ -22,7 +21,6 @@ const CartCheckout = ({ total, cart }) => {
         },
       });
       dispatch(clearCart());
-      console.log('new order', newOrder.data);
     } catch (err) {
       throw new Error(err.message);
     }

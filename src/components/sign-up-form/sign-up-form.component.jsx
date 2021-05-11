@@ -26,7 +26,6 @@ const SignUpForm = () => {
       );
       const data = registerRespond.data;
       if (data) dispatch(hideSignUpModal());
-      console.log(data);
     } catch (err) {
       throw new Error('register failed');
     }

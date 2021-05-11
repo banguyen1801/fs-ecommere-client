@@ -7,7 +7,6 @@ import SellerPagination from '../seller-pagination/seller-pagination.component';
 import { updateOrderStatusAsync } from '../../redux/order/order.actions';
 
 const SellerOrderTable = ({ ordersArray, ...tableProps }) => {
-  console.log('table props', tableProps);
   const dispatch = useDispatch();
   const orderTotalCalculator = (itemsArray) => {
     return itemsArray.reduce((acc, current) => {

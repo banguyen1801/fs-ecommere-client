@@ -88,6 +88,17 @@ const productReducer = (state = initialState, action = {}) => {
         ...state,
         sellerProductPerPage: action.payload,
       };
+    case productActionTypes.SELLER_DELETE_PRODUCT:
+      const index = state.sellerTableProducts.findIndex(
+        (product) => product._id === action.payload._id
+      );
+      return {
+        ...state,
+        sellerTableProducts: [
+          ...state.ordersInfo.slice(0, index),
+          ...state.ordersInfo.slice(index + 1),
+        ],
+      };
     default:
       return state;
   }

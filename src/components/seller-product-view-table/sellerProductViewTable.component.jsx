@@ -5,7 +5,6 @@ import SellerPagination from '../seller-pagination/seller-pagination.component';
 import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
 
 const SellerProductViewTable = ({ productsInfo, ...productTableProps }) => {
-  console.log(productTableProps);
   return (
     <div className="seller-product-view-page__table-wrapper">
       <table className="seller-product-view-page__table">

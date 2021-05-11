@@ -4,22 +4,46 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Button } from '@material-ui/core';
 import Select from 'react-select';
+
 import {
   colorOptions,
   sizeOptions,
   categoriesOptions,
   brandOptions,
-} from './optionsData';
+  handleSubmit,
+} from './productCreationFormUtils';
+
+import * as Yup from 'yup';
+const prod = {
+  size: ['S', 'L', 'XS'],
+  name: 'Lime Skirt',
+  brand: ['Zara'],
+  price: 400,
+  color: ['blue', 'black', 'brown'],
+  stock: 500,
+  categories: ['MaxiMidiDresses', 'Clothes'],
+};
+const productCreationSchema = Yup.object().shape({
+  productImages: Yup.array(),
+  productName: Yup.string().required(),
+  categories: Yup.array().required(),
+  brand: Yup.object().required(),
+  price: Yup.number().required(),
+  size: Yup.array().required(),
+  color: Yup.array().required(),
+  quantity: Yup.number().required(),
+  description: Yup.string().required(),
+});
 
 const initialValues = {
-  productImages: ['dadasdsadssasa.png'],
+  productImages: '',
   productName: '',
-  categories: [],
-  brand: [],
-  price: 0,
-  size: [],
-  color: [],
-  quantity: 0,
+  categories: '',
+  brand: '',
+  price: '',
+  size: '',
+  color: '',
+  quantity: '',
   description: '',
 };
 
@@ -30,11 +54,11 @@ const ProductCreationForm = () => {
         initialValues={initialValues}
         onSubmit={(data, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          //make async call
-          console.log(data);
+          handleSubmit(data);
           setSubmitting(false);
           resetForm();
         }}
+        validationSchema={productCreationSchema}
       >
         {({
           values,
@@ -43,6 +67,9 @@ const ProductCreationForm = () => {
           handleChange,
           handleSubmit,
           setFieldValue,
+          setFieldTouched,
+          errors,
+          touched,
         }) => (
           <form onSubmit={handleSubmit} className="product-creation-form">
             <div className="seller-product-creation-row">
@@ -63,7 +90,7 @@ const ProductCreationForm = () => {
               </div>
             </div>
             <div className="seller-product-creation-row">
-              <span className="row-label">NAME</span>
+              <span className="row-label">NAME*</span>
               <input
                 className="input-field"
                 name="productName"
@@ -73,32 +100,41 @@ const ProductCreationForm = () => {
                 placeholder="Linen Party Shirt"
               />
             </div>
+            {errors.productName && touched.productName ? (
+              <div className="seller-form-error">{errors.productName}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">CATEGORIES</span>
+              <span className="row-label">CATEGORIES*</span>
               <div className="input-field">
                 <Select
+                  value={values.categories || ''}
                   options={categoriesOptions}
                   onChange={(value) => setFieldValue('categories', value)}
-                  placeholder="Party Dresses"
+                  onBlur={() => setFieldTouched('categories', true)}
                   isSearchable
                   isMulti
                 />
               </div>
             </div>
+            {errors.categories && touched.categories ? (
+              <div className="seller-form-error">{errors.categories}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">BRAND</span>
+              <span className="row-label">BRAND*</span>
               <Select
                 className="input-field"
+                value={values.brand || ''}
                 options={brandOptions}
                 onChange={(value) => setFieldValue('brand', value)}
-                placeholder="Zara"
+                onBlur={() => setFieldTouched('brand', true)}
                 isSearchable
-                isMulti
               />
             </div>
-
+            {errors.brand && touched.brand ? (
+              <div className="seller-form-error">{errors.brand}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">PRICE ($)</span>
+              <span className="row-label">PRICE ($)*</span>
               <input
                 className="input-field"
                 name="price"
@@ -107,30 +143,41 @@ const ProductCreationForm = () => {
                 onBlur={handleBlur}
               />
             </div>
+            {errors.price && touched.price ? (
+              <div className="seller-form-error">{errors.price}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">SIZE</span>
+              <span className="row-label">SIZE*</span>
               <Select
+                value={values.size || ''}
                 className="input-field"
                 options={sizeOptions}
                 onChange={(value) => setFieldValue('size', value)}
-                placeholder="S"
+                onBlur={() => setFieldTouched('size', true)}
                 isSearchable
                 isMulti
               />
             </div>
+            {errors.size && touched.size ? (
+              <div className="seller-form-error">{errors.size}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">COLORS</span>
+              <span className="row-label">COLORS*</span>
               <Select
                 className="input-field"
+                value={values.color || ''}
                 options={colorOptions}
                 onChange={(value) => setFieldValue('color', value)}
-                placeholder="White"
+                onBlur={() => setFieldTouched('color', true)}
                 isSearchable
                 isMulti
               />
             </div>
+            {errors.color && touched.color ? (
+              <div className="seller-form-error">{errors.color}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">QUANTITY</span>
+              <span className="row-label">QUANTITY*</span>
               <input
                 className="input-field"
                 name="quantity"
@@ -139,8 +186,11 @@ const ProductCreationForm = () => {
                 onBlur={handleBlur}
               />
             </div>
+            {errors.quantity && touched.quantity ? (
+              <div className="seller-form-error">{errors.quantity}</div>
+            ) : null}
             <div className="seller-product-creation-row">
-              <span className="row-label">DESCRIPTION</span>
+              <span className="row-label">DESCRIPTION*</span>
               <textarea
                 className="input-field"
                 name="description"
@@ -149,7 +199,9 @@ const ProductCreationForm = () => {
                 onBlur={handleBlur}
               />
             </div>
-
+            {errors.description && touched.description ? (
+              <div className="seller-form-error">{errors.description}</div>
+            ) : null}
             <div className="seller-product-creation-row">
               <Button
                 className="product-creation-form__button-secondary"
@@ -165,7 +217,8 @@ const ProductCreationForm = () => {
                 Complete
               </Button>
             </div>
-            {/* <pre>{JSON.stringify(values, null, 2)}</pre>s */}
+            <pre>{JSON.stringify(values, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}
           </form>
         )}
       </Formik>

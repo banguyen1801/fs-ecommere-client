@@ -1,8 +1,6 @@
 import './product-view.styles.scss';
 import React from 'react';
 
-import { useSelector } from 'react-redux';
-
 import ProductCard from '../product-card/product-card.component';
 
 const ProductView = ({ productsList }) => {

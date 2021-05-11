@@ -156,3 +156,8 @@ export const sellerFetchProductAsync = (currentPage, limit) => {
     }
   };
 };
+
+export const deleteProduct = (product) => ({
+  type: productActionTypes.SELLER_DELETE_PRODUCT,
+  payload: product,
+});

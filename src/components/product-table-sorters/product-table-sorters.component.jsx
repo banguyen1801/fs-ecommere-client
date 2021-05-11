@@ -29,9 +29,10 @@ const ProductTableSorters = () => {
       </div>
 
       <div className="seller-product-view-page__add-product">
-        <Link to="/sellers/addProducts"></Link>
         <span className="icon icon-add-solid"></span>
-        <button className="add-product-button">AddProduct</button>
+        <Link className="add-product-button__link" to="/sellers/addProducts">
+          <button className="add-product-button">Add Product</button>
+        </Link>
       </div>
 
       <div className="seller-product-view-page__table-sorters__exports">

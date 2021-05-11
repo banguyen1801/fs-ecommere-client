@@ -16,6 +16,13 @@
     align-items: center;
     flex-wrap: wrap;
 
+    .seller-form-error {
+      color: red;
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      margin-top: -1.5rem;
+    }
     .seller-product-creation-row {
       margin-bottom: 1.5rem;
       display: flex;
