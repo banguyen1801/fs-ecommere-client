@@ -1,5 +1,4 @@
 import axios from 'axios';
-import SellerPagination from '../../components/seller-pagination/seller-pagination.component';
 import productActionTypes from './product.types';
 
 export const fetchAllProductStart = () => ({

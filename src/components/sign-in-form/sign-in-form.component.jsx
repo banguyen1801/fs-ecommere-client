@@ -1,5 +1,5 @@
 import './sign-in-form.styles.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -44,7 +44,7 @@ const SignInForm = () => {
 
       console.log('decoded jwtToken', jwt.decode(data.accessToken));
       setUser(jwt.decode(data.accessToken));
-      dispatch(setCurrentUser(jwt.decode(data.accessToken)));
+      dispatch(setCurrentUser(data.user));
 
       console.log(data);
     } catch (err) {
@@ -52,20 +52,6 @@ const SignInForm = () => {
       dispatch(showSignInModal());
     }
   };
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/api/products/advanced', {
-        params: {
-          page: 1,
-          categories: ['MaxiMidiDresses'],
-          sort: 'highestprice',
-        },
-      })
-      .then((res) => console.log(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   return (
     <div className="si-form">

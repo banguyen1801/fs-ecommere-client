@@ -1,6 +1,6 @@
 import './user-icon.styles.scss';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { logOutAction } from '../../redux/user/user.actions';
@@ -11,10 +11,12 @@ const UserIcon = () => {
     sessionStorage.clear();
     dispatch(logOutAction());
   };
+  const userStore = useSelector((state) => state.user);
+  const { name } = userStore.user;
 
   return (
     <div className="user-icon-dropdown">
-      <div className="dropbtn">User Icon</div>
+      <div className="dropbtn">{name}</div>
       <div className="dropdown-content">
         <Link to="/customers">User Profile</Link>
         <Link to="/customers" onClick={() => logOut()}>

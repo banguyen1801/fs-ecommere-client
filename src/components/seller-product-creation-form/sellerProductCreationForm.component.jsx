@@ -1,7 +1,7 @@
 import './sellerProductCreationForm.styles.scss';
 import React from 'react';
 
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { Button } from '@material-ui/core';
 import Select from 'react-select';
 
@@ -10,21 +10,23 @@ import {
   sizeOptions,
   categoriesOptions,
   brandOptions,
-  handleSubmit,
+  handleUploadFile,
 } from './productCreationFormUtils';
 
 import * as Yup from 'yup';
-const prod = {
-  size: ['S', 'L', 'XS'],
-  name: 'Lime Skirt',
-  brand: ['Zara'],
-  price: 400,
-  color: ['blue', 'black', 'brown'],
-  stock: 500,
-  categories: ['MaxiMidiDresses', 'Clothes'],
-};
+
+// const prod = {
+//   size: ['S', 'L', 'XS'],
+//   name: 'Lime Skirt',
+//   brand: ['Zara'],
+//   price: 400,
+//   color: ['blue', 'black', 'brown'],
+//   stock: 500,
+//   categories: ['MaxiMidiDresses', 'Clothes'],
+// };
+
 const productCreationSchema = Yup.object().shape({
-  productImages: Yup.array(),
+  uploaded_image: Yup.array(),
   productName: Yup.string().required(),
   categories: Yup.array().required(),
   brand: Yup.object().required(),
@@ -36,7 +38,7 @@ const productCreationSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  productImages: '',
+  uploaded_image: [],
   productName: '',
   categories: '',
   brand: '',
@@ -52,9 +54,11 @@ const ProductCreationForm = () => {
     <div className="product-creation-form-wrapper">
       <Formik
         initialValues={initialValues}
-        onSubmit={(data, { setSubmitting, resetForm }) => {
+        onSubmit={async (data, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          handleSubmit(data);
+          handleUploadFile(data);
+
+          console.log('submitted form data: ', data);
           setSubmitting(false);
           resetForm();
         }}
@@ -71,22 +75,46 @@ const ProductCreationForm = () => {
           errors,
           touched,
         }) => (
-          <form onSubmit={handleSubmit} className="product-creation-form">
+          <Form
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+            className="product-creation-form"
+          >
             <div className="seller-product-creation-row">
               <span className="row-label">PHOTOS</span>
-              <div className="upload-image-buttons">
-                <button className="upload-button">
-                  <span className="icon icon-add-solid"></span>
-                </button>
-                <button className="upload-button">
-                  <span className="icon icon-add-solid"></span>
-                </button>
-                <button className="upload-button">
-                  <span className="icon icon-add-solid"></span>
-                </button>
-                <button className="upload-button">
-                  <span className="icon icon-add-solid"></span>
-                </button>
+              <div className="upload-image">
+                <div>
+                  <input
+                    name="uploaded_image"
+                    type="file"
+                    className="upload-image__btn"
+                    onChange={(event) => {
+                      setFieldValue(
+                        'uploaded_image',
+                        event.currentTarget.files
+                      );
+                    }}
+                    multiple
+                  />
+                </div>
+                {/* div for previewing uploaded image */}
+                <div>
+                  {Array.from(values.uploaded_image)
+                    .slice(0, 8)
+                    .map((image, { index }) => {
+                      if (index >= 8) return null;
+                      return (
+                        <img
+                          className="preview-image"
+                          key={Math.random()}
+                          alt="index"
+                          src={URL.createObjectURL(image)}
+                          height={100}
+                          width={150}
+                        />
+                      );
+                    })}
+                </div>
               </div>
             </div>
             <div className="seller-product-creation-row">
@@ -218,8 +246,8 @@ const ProductCreationForm = () => {
               </Button>
             </div>
             <pre>{JSON.stringify(values, null, 2)}</pre>
-            {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}
-          </form>
+            <pre>{JSON.stringify(errors, null, 2)}</pre>
+          </Form>
         )}
       </Formik>
     </div>

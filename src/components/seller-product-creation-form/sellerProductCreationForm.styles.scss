@@ -30,23 +30,19 @@
       width: 80%;
       align-items: center;
 
-      .upload-image-buttons {
+      .upload-image {
         width: 80%;
         margin-left: auto;
         display: flex;
-        justify-content: space-between;
+        // flex-direction: column;
         flex-wrap: wrap;
 
-        .upload-button {
-          height: 25vh;
-          width: 23%;
-          background-color: #ededed;
-          border: 1px solid #ededed;
-          color: #acacac;
+        .upload-image__btn {
+          cursor: pointer;
+          z-index: 5;
         }
-        .upload-button:hover {
-          background-color: #acacac;
-          color: #f6f6f6;
+        .preview-image {
+          flex: 0 1 25%;
         }
       }
 

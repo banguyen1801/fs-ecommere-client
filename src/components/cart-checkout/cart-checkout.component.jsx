@@ -20,6 +20,7 @@ const CartCheckout = ({ total, cart }) => {
           items: cart,
         },
       });
+      console.log('New Order', newOrder);
       dispatch(clearCart());
     } catch (err) {
       throw new Error(err.message);

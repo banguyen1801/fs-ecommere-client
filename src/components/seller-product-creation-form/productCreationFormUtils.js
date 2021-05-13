@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+// eslint-disable-next-line
 const formDataExample = {
   productImages: '',
   productName: 'Linen someothing',
@@ -62,8 +62,28 @@ export const handleSubmit = async (formData) => {
     throw new Error(err.message);
   }
 };
-export const formDataProcessor = (formData) => {
+
+export const handleUploadFile = ({ ...data }) => {
+  const formData = new FormData();
+
+  const processedFormData = formDataProcessor({ formData, data });
+
+  axios
+    .post('http://localhost:5000/api/products/create', processedFormData)
+    .then((res) => console.log('res.data', res.data))
+    .catch((err) => console.log('err', err));
+};
+
+export const turnImageInto64Base = (image) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(image);
+  reader.onloadend = () => {
+    return reader.result;
+  };
+};
+export const formDataProcessor = ({ formData, data }) => {
   const {
+    uploaded_image,
     productName,
     categories,
     brand,
@@ -72,18 +92,20 @@ export const formDataProcessor = (formData) => {
     price,
     quantity,
     description,
-  } = formData;
+  } = data;
+  for (let i = 0; i < uploaded_image.length; i++) {
+    formData.append('uploaded_image', uploaded_image[i]);
+  }
 
-  return {
-    name: productName,
-    categories: toValueArray(categories),
-    brand: brand.value,
-    size: toValueArray(size),
-    color: toValueArray(color),
-    price: price,
-    stock: quantity,
-    description: description,
-  };
+  appendObjArrayToArrayInFormData(formData, categories, 'categories[]');
+  appendObjArrayToArrayInFormData(formData, size, 'size[]');
+  appendObjArrayToArrayInFormData(formData, color, 'color[]');
+  formData.append('productName', productName);
+  formData.append('brand', brand.value);
+  formData.append('price', price);
+  formData.append('quantity', quantity);
+  formData.append('description', description);
+  return formData;
 };
 
 export const toValueArray = (arrayOfObjects) => {
@@ -92,6 +114,13 @@ export const toValueArray = (arrayOfObjects) => {
     result.push(value);
   });
   return result;
+};
+
+export const appendObjArrayToArrayInFormData = (formData, ObjArray, label) => {
+  ObjArray.forEach(({ value }) => {
+    formData.append(label, value);
+  });
+  return formData;
 };
 
 export const colorOptions = [
