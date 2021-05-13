@@ -10,6 +10,8 @@ import ProductInfo from '../../components/product-info/product-info.component';
 
 import { fetchOneProductAsync } from '../../redux/product/product.actions';
 
+import { urlFormatter } from '../../utils/misc/formatters';
+
 const ProductDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const ProductDetailPage = () => {
   }, [dispatch]);
 
   const { imageUrl = [] } = oneProduct || {};
+  console.log(imageUrl[0]);
 
   return !imageUrl.length ? null : (
     <div className="product-detail">
@@ -33,14 +36,16 @@ const ProductDetailPage = () => {
               : imageUrl.map((url, id) => (
                   <div
                     key={id}
-                    style={{ backgroundImage: `url(${url})` }}
+                    style={{
+                      backgroundImage: `url(${urlFormatter(url)})`,
+                    }}
                     className="extra-images__image"
                   ></div>
                 ))}
           </div>
           <div
             style={{
-              backgroundImage: `url(${imageUrl.length && imageUrl[0]})`,
+              backgroundImage: `url(${urlFormatter(imageUrl[0])})`,
             }}
             className="detail-center__main-image"
           ></div>

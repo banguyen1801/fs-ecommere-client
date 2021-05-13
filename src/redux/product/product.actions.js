@@ -20,7 +20,13 @@ export const fetchAllProductAsync = () => {
     try {
       dispatch(fetchAllProductStart());
       const response = await axios.get(
-        `http://localhost:5000/api/products/all`
+        `http://localhost:5000/api/products/all`,
+        {
+          params: {
+            page: 1,
+            limit: 15,
+          },
+        }
       );
       if (response) dispatch(fetchAllProductSuccess(response.data));
     } catch (err) {

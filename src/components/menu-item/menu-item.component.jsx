@@ -2,11 +2,12 @@ import React from 'react';
 import './menu-item.styles.scss';
 
 import { Link } from 'react-router-dom';
+import { urlFormatter } from '../../utils/misc/formatters';
 
 const MenuItem = ({ title, imageUrl, size, linkUrl }) => (
   <div
     style={{
-      backgroundImage: `url(${imageUrl})`,
+      backgroundImage: `url(${urlFormatter(imageUrl[0])})`,
     }}
     className={` ${size} menu-item `}
   >
