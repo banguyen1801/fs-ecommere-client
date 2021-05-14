@@ -28,6 +28,9 @@ const SellerProductViewPage = () => {
     dispatch(sellerFetchProductAsync(sellerCurrentPage, 10));
   }, [dispatch, sellerCurrentPage]);
 
+  if (sellerTableProducts === undefined)
+    return <span>Maybe you are not allowed to fetch these infos</span>;
+
   return (
     <div className="seller-product-view-page">
       <div className="seller-product-view-page__title">Products</div>

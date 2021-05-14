@@ -26,7 +26,6 @@ import * as Yup from 'yup';
 // };
 
 const productCreationSchema = Yup.object().shape({
-  uploaded_image: Yup.array(),
   productName: Yup.string().required(),
   categories: Yup.array().required(),
   brand: Yup.object().required(),
@@ -245,8 +244,8 @@ const ProductCreationForm = () => {
                 Complete
               </Button>
             </div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
-            <pre>{JSON.stringify(errors, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(values, null, 2)}</pre>
+            <pre>{JSON.stringify(errors, null, 2)}</pre> */}
           </Form>
         )}
       </Formik>

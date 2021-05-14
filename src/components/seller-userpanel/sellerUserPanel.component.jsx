@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOutAction } from '../../redux/user/user.actions';
+import { setAuthToken } from '../../utils/auth/auth.utils';
 
 const SellerUserPanel = () => {
   const userStore = useSelector((state) => state.user);
@@ -10,6 +11,7 @@ const SellerUserPanel = () => {
   const dispatch = useDispatch();
 
   const logOut = () => {
+    setAuthToken('');
     sessionStorage.clear();
     dispatch(logOutAction());
   };

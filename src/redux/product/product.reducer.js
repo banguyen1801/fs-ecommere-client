@@ -18,14 +18,14 @@ const initialState = {
 
 const productReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case productActionTypes.FETCH_ALL_PRODUCT_START:
+    case productActionTypes.FETCH_INITIAL_PRODUCT_START:
     case productActionTypes.FETCH_PRODUCT_ADVANCE_START:
     case productActionTypes.FETCH_ONE_PRODUCT_START:
       return {
         ...state,
         isLoading: true,
       };
-    case productActionTypes.FETCH_ALL_PRODUCT_SUCCESS:
+    case productActionTypes.FETCH_INITIAL_PRODUCT_SUCCESS:
     case productActionTypes.FETCH_PRODUCT_ADVANCE_SUCCESS:
       return {
         ...state,
@@ -39,7 +39,7 @@ const productReducer = (state = initialState, action = {}) => {
         singleProduct: action.payload,
         isLoading: false,
       };
-    case productActionTypes.FETCH_ALL_PRODUCT_FAILED:
+    case productActionTypes.FETCH_INITIAL_PRODUCT_FAILED:
     case productActionTypes.FETCH_PRODUCT_ADVANCE_FAILED:
     case productActionTypes.FETCH_ONE_PRODUCT_FAILED:
       return {

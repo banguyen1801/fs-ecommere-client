@@ -9,13 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
 import { store, persistor } from './redux/store';
 
 // Utils
-import setAuthorizationToken from './utils/auth/setAuthorizationToken';
-
-setAuthorizationToken(JSON.parse(sessionStorage.getItem('jwtToken')));
+import { setAuthToken } from './utils/auth/auth.utils';
+setAuthToken(JSON.parse(sessionStorage.getItem('jwtToken')));
 
 ReactDOM.render(
   <Provider store={store}>

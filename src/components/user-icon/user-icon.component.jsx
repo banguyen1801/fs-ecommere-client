@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { logOutAction } from '../../redux/user/user.actions';
+import { setAuthToken } from '../../utils/auth/auth.utils';
 
 const UserIcon = () => {
   const dispatch = useDispatch();
   const logOut = () => {
+    setAuthToken('');
     sessionStorage.clear();
     dispatch(logOutAction());
   };

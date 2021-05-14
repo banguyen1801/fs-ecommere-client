@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-export default async function login(email, password) {
+import { setAuthToken } from './auth.utils';
+
+// old bad version of login, not usable atm
+export const login = async (email, password) => {
   let data, accessToken, user;
   try {
     const loginResponse = await axios.post('http://localhost:5000/api/login', {
@@ -12,10 +15,16 @@ export default async function login(email, password) {
     data = loginResponse.data;
     accessToken = data.accessToken;
     user = data.user;
-    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    setAuthToken(accessToken);
     window.location.reload();
   } catch (err) {
-    throw new Error('Logging failed');
+    throw err;
   }
   return { data, accessToken, user };
-}
+};
+
+// delete Authentication header and clear sessionStorage
+export const clearJwtTokenData = () => {
+  setAuthToken('');
+  sessionStorage.clear();
+};

@@ -1,26 +1,26 @@
 import axios from 'axios';
 import productActionTypes from './product.types';
 
-export const fetchAllProductStart = () => ({
-  type: productActionTypes.FETCH_ALL_PRODUCT_START,
+export const fetchInitialProductStart = () => ({
+  type: productActionTypes.FETCH_INITIAL_PRODUCT_START,
 });
 
-export const fetchAllProductFailed = (errMessage) => ({
-  type: productActionTypes.FETCH_ALL_PRODUCT_FAILED,
+export const fetchInitialProductFailed = (errMessage) => ({
+  type: productActionTypes.FETCH_INITIAL_PRODUCT_FAILED,
   payload: errMessage,
 });
 
-export const fetchAllProductSuccess = (response) => ({
-  type: productActionTypes.FETCH_ALL_PRODUCT_SUCCESS,
+export const fetchInitialProductSuccess = (response) => ({
+  type: productActionTypes.FETCH_INITIAL_PRODUCT_SUCCESS,
   payload: response,
 });
 
-export const fetchAllProductAsync = () => {
+export const fetchInitialProductAsync = () => {
   return async (dispatch) => {
     try {
-      dispatch(fetchAllProductStart());
+      dispatch(fetchInitialProductStart());
       const response = await axios.get(
-        `http://localhost:5000/api/products/all`,
+        `http://localhost:5000/api/products/initial`,
         {
           query: {
             page: 1,
@@ -28,9 +28,9 @@ export const fetchAllProductAsync = () => {
           },
         }
       );
-      if (response) dispatch(fetchAllProductSuccess(response.data));
+      if (response) dispatch(fetchInitialProductSuccess(response.data));
     } catch (err) {
-      dispatch(fetchAllProductFailed(err.message));
+      dispatch(fetchInitialProductFailed(err.message));
     }
   };
 };
@@ -84,7 +84,7 @@ export const fetchProductAdvancedAsync = ({
       );
       if (!product.length) dispatch(fetchProductAdvancedSuccess(product.data));
     } catch (err) {
-      dispatch(fetchAllProductFailed(err.message));
+      dispatch(fetchProductAdvancedFailed(err.message));
     }
   };
 };

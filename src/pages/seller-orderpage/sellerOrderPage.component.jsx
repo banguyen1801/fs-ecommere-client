@@ -21,7 +21,8 @@ const SellerOrderPage = () => {
   useEffect(() => {
     dispatch(fetchAllOrdersAsync(currentPage));
   }, [dispatch, currentPage]);
-
+  if (ordersInfo === undefined)
+    return <span>Maybe you are not allowed here.</span>;
   return (
     <div className="seller-order-page">
       <div className="seller-order-page__title">Orders</div>

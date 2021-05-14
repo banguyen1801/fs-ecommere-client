@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductList from '../../components/product-list/product-list.component';
 import SideBar from '../../components/sidebar/sidebar.component';
 import BreadCrump from '../../components/bread-crump/bread-crump.component';
-import { fetchAllProductAsync } from '../../redux/product/product.actions';
+import { fetchInitialProductAsync } from '../../redux/product/product.actions';
 
 const ProductPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAllProductAsync());
+    dispatch(fetchInitialProductAsync());
   }, [dispatch]);
 
   const productStore = useSelector((state) => state.product);

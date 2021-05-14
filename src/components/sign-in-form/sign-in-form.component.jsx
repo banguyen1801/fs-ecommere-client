@@ -6,7 +6,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
 import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
-import setAuthorizationToken from '../../utils/auth/setAuthorizationToken';
+import { setAuthToken } from '../../utils/auth/auth.utils';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import {
@@ -40,12 +40,10 @@ const SignInForm = () => {
         dispatch(hideSignInModal());
       }
       setJwtToken(data.accessToken);
-      setAuthorizationToken(data.accessToken);
-
+      setAuthToken(data.accessToken);
       console.log('decoded jwtToken', jwt.decode(data.accessToken));
       setUser(jwt.decode(data.accessToken));
       dispatch(setCurrentUser(data.user));
-
       console.log(data);
     } catch (err) {
       console.log(err);
