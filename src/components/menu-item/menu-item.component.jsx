@@ -7,7 +7,7 @@ import { urlFormatter } from '../../utils/misc/formatters';
 const MenuItem = ({ title, imageUrl, size, linkUrl }) => (
   <div
     style={{
-      backgroundImage: `url(${urlFormatter(imageUrl[0])})`,
+      backgroundImage: `url(${imageUrl})`,
     }}
     className={` ${size} menu-item `}
   >

@@ -1,10 +1,17 @@
 import './sellerProductViewTable.styles.scss';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import SellerPagination from '../seller-pagination/seller-pagination.component';
 
 import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
 
-const SellerProductViewTable = ({ productsInfo, ...productTableProps }) => {
+import { sellerDeleteProductAsync } from '../../redux/product/product.actions';
+
+const SellerProductViewTable = ({
+  sellerTableProducts,
+  ...productTableProps
+}) => {
+  const dispatch = useDispatch();
   return (
     <div className="seller-product-view-page__table-wrapper">
       <table className="seller-product-view-page__table">
@@ -18,7 +25,7 @@ const SellerProductViewTable = ({ productsInfo, ...productTableProps }) => {
           </tr>
         </thead>
         <tbody>
-          {productsInfo.map(({ name, createdAt, stock, _id, price }) => (
+          {sellerTableProducts.map(({ name, createdAt, stock, _id, price }) => (
             <tr key={_id}>
               <td className="first-column table-row col-name">{name}</td>
               <td className="table-row col-sold">0/{stock}</td>
@@ -35,7 +42,9 @@ const SellerProductViewTable = ({ productsInfo, ...productTableProps }) => {
                       <span className="icon icon-create"></span>
                       Edit
                     </div>
-                    <div>
+                    <div
+                      onClick={() => dispatch(sellerDeleteProductAsync(_id))}
+                    >
                       <span className="icon icon-bin2"></span>
                       Delete
                     </div>

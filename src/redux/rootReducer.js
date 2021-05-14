@@ -12,7 +12,7 @@ import OrderReducer from './order/order.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['product', 'cart', 'user'],
+  whitelist: ['cart', 'user'],
 };
 
 const rootReducer = combineReducers({

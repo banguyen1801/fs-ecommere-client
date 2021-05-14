@@ -22,7 +22,7 @@ export const fetchAllProductAsync = () => {
       const response = await axios.get(
         `http://localhost:5000/api/products/all`,
         {
-          params: {
+          query: {
             page: 1,
             limit: 15,
           },
@@ -161,8 +161,32 @@ export const sellerFetchProductAsync = (currentPage, limit) => {
     }
   };
 };
-
-export const deleteProduct = (product) => ({
-  type: productActionTypes.SELLER_DELETE_PRODUCT,
+export const sellerDeleteProductStart = () => ({
+  type: productActionTypes.SELLER_DELETE_PRODUCT_START,
+});
+export const sellerDeleteProductFailed = (errMessage) => ({
+  type: productActionTypes.SELLER_DELETE_PRODUCT_FAILED,
+  payload: errMessage,
+});
+export const sellerDeleteProductSuccess = (product) => ({
+  type: productActionTypes.SELLER_DELETE_PRODUCT_SUCCESS,
   payload: product,
 });
+
+export const sellerDeleteProductAsync = (productId) => {
+  return async (dispatch) => {
+    dispatch(sellerDeleteProductStart());
+    try {
+      const removedProduct = await axios.post(
+        'http://localhost:5000/api/products/remove',
+        {
+          _id: productId,
+        }
+      );
+      if (removedProduct)
+        dispatch(sellerDeleteProductSuccess(removedProduct.data));
+    } catch (error) {
+      sellerDeleteProductFailed(error.message);
+    }
+  };
+};

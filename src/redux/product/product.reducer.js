@@ -62,11 +62,13 @@ const productReducer = (state = initialState, action = {}) => {
         currentCategories: [action.payload],
       };
     case productActionTypes.SELLER_FETCH_PRODUCT_START:
+    case productActionTypes.SELLER_DELETE_PRODUCT_START:
       return {
         ...state,
         sellerIsLoading: true,
       };
     case productActionTypes.SELLER_FETCH_PRODUCT_FAILED:
+    case productActionTypes.SELLER_DELETE_PRODUCT_FAILED:
       return {
         ...state,
         sellerErrMessage: action.payload,
@@ -88,16 +90,13 @@ const productReducer = (state = initialState, action = {}) => {
         ...state,
         sellerProductPerPage: action.payload,
       };
-    case productActionTypes.SELLER_DELETE_PRODUCT:
-      const index = state.sellerTableProducts.findIndex(
-        (product) => product._id === action.payload._id
-      );
+    case productActionTypes.SELLER_DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
-        sellerTableProducts: [
-          ...state.ordersInfo.slice(0, index),
-          ...state.ordersInfo.slice(index + 1),
-        ],
+        sellerTableProducts: state.sellerTableProducts.filter(
+          (product) => product._id !== action.payload._id
+        ),
+        sellerIsLoading: false,
       };
     default:
       return state;

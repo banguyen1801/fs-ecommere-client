@@ -36,7 +36,7 @@ const SellerProductViewPage = () => {
         <span>Seller Page is Loading</span>
       ) : (
         <SellerProductViewTable
-          productsInfo={sellerTableProducts}
+          sellerTableProducts={sellerTableProducts}
           maxPage={sellerMaxPage}
           handlePageChange={handlePageChange}
           currentPage={sellerCurrentPage}
