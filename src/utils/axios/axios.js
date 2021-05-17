@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseURL = process.env.APP_URL;
-console.log();
+const baseURL = process.env.REACT_APP_APP_URL;
+console.log(`baseURL`, baseURL);
 
 let headers = {};
 
