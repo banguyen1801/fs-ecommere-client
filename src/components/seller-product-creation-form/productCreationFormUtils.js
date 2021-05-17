@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../utils/axios/axios';
 // eslint-disable-next-line
 const formDataExample = {
   productImages: '',
@@ -54,7 +54,7 @@ const formDataExample = {
 
 export const handleSubmit = async (formData) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/products', {
+    const response = await axiosInstance.post('/api/products', {
       params: formDataProcessor(formData),
     });
     console.log('new product', response.data);
@@ -68,8 +68,8 @@ export const handleUploadFile = ({ ...data }) => {
 
   const processedFormData = formDataProcessor({ formData, data });
 
-  axios
-    .post('http://localhost:5000/api/products/create', processedFormData)
+  axiosInstance
+    .post('api/products/create', processedFormData)
     .then((res) => console.log('res.data', res.data))
     .catch((err) => console.log('err', err));
 };

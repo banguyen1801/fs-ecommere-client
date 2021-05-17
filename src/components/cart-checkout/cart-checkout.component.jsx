@@ -1,6 +1,6 @@
 import './cart-checkout.styles.scss';
 import React from 'react';
-import axios from 'axios';
+import axiosInstance from '../../utils/axios/axios';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
@@ -14,7 +14,7 @@ const CartCheckout = ({ total, cart }) => {
   const handleCreateOrder = async ({ cart, id }) => {
     if (!cart || cart.length === 0) return;
     try {
-      const newOrder = await axios.post('http://localhost:5000/api/orders', {
+      const newOrder = await axiosInstance.post('/api/orders', {
         params: {
           user_id: id,
           items: cart,

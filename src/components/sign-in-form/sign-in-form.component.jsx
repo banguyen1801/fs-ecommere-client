@@ -2,7 +2,6 @@ import './sign-in-form.styles.scss';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
 import useSessionStorage from '../../utils/custom-hooks/useSessionStorage';
@@ -13,6 +12,8 @@ import {
   showSignInModal,
   hideSignInModal,
 } from '../../redux/modal/modal.actions';
+
+import axiosInstance from '../../utils/axios/axios';
 
 const SignInForm = () => {
   const [checked, setChecked] = useState(false);
@@ -26,15 +27,12 @@ const SignInForm = () => {
 
   const login = async () => {
     try {
-      const loginResponse = await axios.post(
-        'http://localhost:5000/api/login',
-        {
-          params: {
-            email: email,
-            password: password,
-          },
-        }
-      );
+      const loginResponse = await axiosInstance.post('/api/login', {
+        params: {
+          email: email,
+          password: password,
+        },
+      });
       const data = loginResponse.data;
       if (data) {
         dispatch(hideSignInModal());

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../utils/axios/axios';
 
 import { setAuthToken } from './auth.utils';
 
@@ -6,7 +6,7 @@ import { setAuthToken } from './auth.utils';
 export const login = async (email, password) => {
   let data, accessToken, user;
   try {
-    const loginResponse = await axios.post('http://localhost:5000/api/login', {
+    const loginResponse = await axiosInstance.post('/api/login', {
       params: {
         email: email,
         password: password,

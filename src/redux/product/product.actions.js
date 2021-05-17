@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../utils/axios/axios';
 import productActionTypes from './product.types';
 
 export const fetchInitialProductStart = () => ({
@@ -19,15 +19,12 @@ export const fetchInitialProductAsync = () => {
   return async (dispatch) => {
     try {
       dispatch(fetchInitialProductStart());
-      const response = await axios.get(
-        `http://localhost:5000/api/products/initial`,
-        {
-          query: {
-            page: 1,
-            limit: 15,
-          },
-        }
-      );
+      const response = await axiosInstance.get(`/api/products/initial`, {
+        query: {
+          page: 1,
+          limit: 15,
+        },
+      });
       if (response) dispatch(fetchInitialProductSuccess(response.data));
     } catch (err) {
       dispatch(fetchInitialProductFailed(err.message));
@@ -72,16 +69,13 @@ export const fetchProductAdvancedAsync = ({
   return async (dispatch) => {
     try {
       dispatch(fetchProductAdvancedStart());
-      const product = await axios.get(
-        'http://localhost:5000/api/products/advanced',
-        {
-          params: {
-            page: currentPage,
-            categories: currentCategories,
-            sort: currentSort,
-          },
-        }
-      );
+      const product = await axiosInstance.get('/api/products/advanced', {
+        params: {
+          page: currentPage,
+          categories: currentCategories,
+          sort: currentSort,
+        },
+      });
       if (!product.length) dispatch(fetchProductAdvancedSuccess(product.data));
     } catch (err) {
       dispatch(fetchProductAdvancedFailed(err.message));
@@ -107,8 +101,8 @@ export const fetchOneProductAsync = (params) => {
   return async (dispatch) => {
     try {
       dispatch(fetchOneProductStart());
-      const singleProduct = await axios.get(
-        `http://localhost:5000/api/products/${params.id}`
+      const singleProduct = await axiosInstance.get(
+        `/api/products/${params.id}`
       );
 
       if (singleProduct) dispatch(fetchOneProductSuccess(singleProduct.data));
@@ -146,15 +140,12 @@ export const sellerFetchProductAsync = (currentPage, limit) => {
   return async (dispatch) => {
     dispatch(sellerFetchProductStart());
     try {
-      const response = await axios.get(
-        'http://localhost:5000/api/products/all',
-        {
-          params: {
-            page: currentPage,
-            limit: limit,
-          },
-        }
-      );
+      const response = await axiosInstance.get('/api/products/all', {
+        params: {
+          page: currentPage,
+          limit: limit,
+        },
+      });
       dispatch(sellerFetchProductSuccess(response.data));
     } catch (err) {
       dispatch(sellerFetchProductFailed(err.message));
@@ -177,12 +168,9 @@ export const sellerDeleteProductAsync = (productId) => {
   return async (dispatch) => {
     dispatch(sellerDeleteProductStart());
     try {
-      const removedProduct = await axios.post(
-        'http://localhost:5000/api/products/remove',
-        {
-          _id: productId,
-        }
-      );
+      const removedProduct = await axiosInstance.post('/api/products/remove', {
+        _id: productId,
+      });
       if (removedProduct)
         dispatch(sellerDeleteProductSuccess(removedProduct.data));
     } catch (error) {

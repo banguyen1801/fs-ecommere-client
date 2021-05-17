@@ -2,7 +2,7 @@ import './sign-up-form.styles.scss';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import axios from 'axios';
+import axiosInstance from '../../utils/axios/axios';
 
 import { hideSignUpModal } from '../../redux/modal/modal.actions';
 
@@ -14,16 +14,13 @@ const SignUpForm = () => {
 
   const signUp = async (username, email, password) => {
     try {
-      const registerRespond = await axios.post(
-        'http://localhost:5000/api/register',
-        {
-          params: {
-            name: username,
-            email: email,
-            password: password,
-          },
-        }
-      );
+      const registerRespond = await axiosInstance.post('/api/register', {
+        params: {
+          name: username,
+          email: email,
+          password: password,
+        },
+      });
       const data = registerRespond.data;
       if (data) dispatch(hideSignUpModal());
     } catch (err) {
