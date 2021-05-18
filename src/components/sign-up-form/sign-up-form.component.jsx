@@ -46,7 +46,7 @@ const SignUpForm = () => {
       />
       <div className="su-form__label">Password</div>
       <input
-        type="text"
+        type="password"
         className="su-form__input"
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password..."

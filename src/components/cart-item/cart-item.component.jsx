@@ -3,7 +3,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
-import { urlFormatter } from '../../utils/misc/formatters';
 
 import { removeItem, addOneItem } from '../../redux/cart/cart.actions';
 
@@ -16,7 +15,7 @@ const CartItem = ({
   return (
     <div className="cart-item">
       <div
-        style={{ backgroundImage: `url(${urlFormatter(imageUrl)})` }}
+        style={{ backgroundImage: `url(${imageUrl})` }}
         className="image"
       ></div>
       <div className="name-modify">

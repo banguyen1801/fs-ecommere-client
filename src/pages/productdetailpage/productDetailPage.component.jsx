@@ -10,8 +10,6 @@ import ProductInfo from '../../components/product-info/product-info.component';
 
 import { fetchOneProductAsync } from '../../redux/product/product.actions';
 
-import { urlFormatter } from '../../utils/misc/formatters';
-
 const ProductDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -37,7 +35,7 @@ const ProductDetailPage = () => {
                   <div
                     key={id}
                     style={{
-                      backgroundImage: `url(${urlFormatter(url)})`,
+                      backgroundImage: `url(${url})`,
                     }}
                     className="extra-images__image"
                   ></div>
@@ -45,7 +43,7 @@ const ProductDetailPage = () => {
           </div>
           <div
             style={{
-              backgroundImage: `url(${urlFormatter(imageUrl[0])})`,
+              backgroundImage: `url(${imageUrl[0]})`,
             }}
             className="detail-center__main-image"
           ></div>

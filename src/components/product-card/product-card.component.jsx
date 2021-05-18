@@ -3,14 +3,12 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { urlFormatter } from '../../utils/misc/formatters';
-
 const ProductCard = ({ item: { imageUrl, name, price, _id } }) => {
   return (
     <div className="product-card">
       <div
         style={{
-          backgroundImage: `url(${urlFormatter(imageUrl[0])})`,
+          backgroundImage: `url(${imageUrl[0]})`,
         }}
         className="product-image"
       >

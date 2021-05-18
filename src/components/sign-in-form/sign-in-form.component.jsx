@@ -60,7 +60,7 @@ const SignInForm = () => {
       />
       <div className="si-form__label">Password</div>
       <input
-        type="text"
+        type="password"
         className="si-form__input"
         placeholder="Password..."
         onChange={(e) => setPassword(e.target.value)}
