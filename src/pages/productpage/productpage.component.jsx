@@ -15,6 +15,8 @@ const ProductPage = () => {
 
   const productStore = useSelector((state) => state.product);
   const { isLoading, products } = productStore;
+
+  if (!products) return <span>Please Login to search for product</span>;
   return isLoading ? (
     <span>Loading</span>
   ) : (

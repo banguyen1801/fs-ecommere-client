@@ -23,7 +23,9 @@ const ProductDetailPage = () => {
   const { imageUrl = [] } = oneProduct || {};
   console.log(imageUrl[0]);
 
-  return !imageUrl.length ? null : (
+  return !imageUrl.length ? (
+    <span>Maybe you need to login</span>
+  ) : (
     <div className="product-detail">
       <BreadCrump />
       <div className="detail-panel">
