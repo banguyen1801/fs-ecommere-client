@@ -10,7 +10,7 @@
 
 # production 
 # not ignoring build folder because server too weak/take too long to build
-/build
+
 
 # misc
 .DS_Store
