@@ -1,6 +1,6 @@
 import './product-info.styles.scss';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { priceFormatter } from '../../utils/custom-hooks/priceFormatter';
 
@@ -13,16 +13,33 @@ const ProductInfo = ({ item }) => {
   const [value, setValue] = useState(2);
   const dispatch = useDispatch();
 
-  const [cartItem, setCartItem] = useState({
-    id: item._id,
-    name: item.name,
-    price: item.price,
-    imageUrl: item.imageUrl[0],
+  const item1 = useSelector((state) => state.product.singleProduct);
+
+  const initialState = {
+    id: item1._id,
+    name: item1.name,
+    price: item1.price,
+    imageUrl: item1.imageUrl[0],
     size: 'S',
-    color: item.color[0],
+    color: item1.color[0],
     quantity: 1,
-    stock: item.stock,
-  });
+    stock: item1.stock,
+  };
+
+  useEffect(() => {
+    setCartItem({
+      id: item._id,
+      name: item.name,
+      price: item.price,
+      imageUrl: item.imageUrl[0],
+      size: 'S',
+      color: item.color[0],
+      quantity: 1,
+      stock: item.stock,
+    });
+  }, [item]);
+
+  const [cartItem, setCartItem] = useState(initialState);
 
   //handle color select
   const handleSizeChange = (newSize) => {
@@ -42,10 +59,15 @@ const ProductInfo = ({ item }) => {
     if (
       newQuantity !== cartItem.quantity &&
       newQuantity !== 0 &&
-      newQuantity <= item.stock
+      newQuantity <= item1.stock
     ) {
       setCartItem({ ...cartItem, quantity: newQuantity });
     }
+  };
+
+  const handleAddItemToCart = (newItem) => {
+    dispatch(addItem(newItem));
+    setCartItem(initialState);
   };
 
   //handle add to cart
@@ -53,8 +75,8 @@ const ProductInfo = ({ item }) => {
 
   return (
     <div className="product-info">
-      <div className="product-info__name">{item.name}</div>
-      <div className="product-info__price">{priceFormatter(item.price)}</div>
+      <div className="product-info__name">{item1.name}</div>
+      <div className="product-info__price">{priceFormatter(item1.price)}</div>
       <div className="product-info__reviews">
         <Box
           component="fieldset"
@@ -75,9 +97,9 @@ const ProductInfo = ({ item }) => {
       </div>
       <div className="product-info__size">
         <div className="legend">Size</div>
-        {item.size.length === 0
+        {item1.size.length === 0
           ? null
-          : item.size.map((size, id) => (
+          : item1.size.map((size, id) => (
               <button
                 key={id}
                 className={`${
@@ -91,9 +113,9 @@ const ProductInfo = ({ item }) => {
       </div>
       <div className="product-info__color">
         <div className="legend">Color</div>
-        {item.color.length === 0
+        {item1.color.length === 0
           ? null
-          : item.color.map((color, id) => (
+          : item1.color.map((color, id) => (
               <button
                 key={id}
                 style={{ backgroundColor: color }}
@@ -117,11 +139,11 @@ const ProductInfo = ({ item }) => {
             onClick={() => handleQuantityChange(cartItem.quantity + 1)}
           ></span>
         </div>
-        <div className="stock">{item.stock} left</div>
+        <div className="stock">{item1.stock} left</div>
       </div>
       <button
         className="product-info__add-to-cart-button"
-        onClick={() => dispatch(addItem(cartItem))}
+        onClick={() => handleAddItemToCart(cartItem)}
       >
         Add to cart
       </button>

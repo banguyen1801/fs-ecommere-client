@@ -21,7 +21,6 @@ const ProductDetailPage = () => {
   }, [dispatch]);
 
   const { imageUrl = [] } = oneProduct || {};
-  console.log(imageUrl[0]);
 
   return !imageUrl.length ? (
     <span>Maybe you need to login</span>
